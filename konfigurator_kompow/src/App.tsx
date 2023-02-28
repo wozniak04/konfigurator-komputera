@@ -2,7 +2,9 @@ function App() {
 
   return (
     <>
-      asdasd
+      <div>
+        u
+      </div>
     </>
   );
 }
