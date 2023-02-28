@@ -5,10 +5,17 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import React from 'react';
+import ReactDOM from 'react-dom/client'
+import Logowanie from './Logowanie';
 
 
 const x=()=>{
-  window.open("../../logowanie.html")
+  ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+    <React.StrictMode>
+      <Logowanie />
+    </React.StrictMode>
+  )
 }
 
 const Menus = () => {
