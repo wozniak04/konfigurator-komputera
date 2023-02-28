@@ -1,23 +1,21 @@
 import React from "react";
 import Oferta from "./Oferta";
 
-class Mid extends React.Component
-{
-
-    render() {
-        return(
-            <>
-            <div className="main-all">
-                <Oferta/>
-                <Oferta/>
-                <Oferta/>
-                <Oferta/>
-                <Oferta/>
-                <Oferta/>
-            </div>
-            </>
-        )
-    }
+const Mid =()=>{
+    return(
+        <>
+        <div className="main-all">
+            <Oferta src="#" opis="komp dnia"/>
+            <Oferta src="#" opis="dobre fest"/>
+            <Oferta src="#" opis="komp dnia"/>
+            <Oferta src="#" opis="komp dnia"/>
+            <Oferta src="#" opis="komp dnia"/>
+            <Oferta src="#" opis="komp dnia"/>
+        </div>
+        </>
+    )
 }
+
+
 
 export default Mid;

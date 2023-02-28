@@ -1,18 +1,21 @@
 import React from "react";
-import '../style/Mids.css'
-class Oferta extends React.Component
-{
+import '../style/Mids.scss'
 
-    render() {
-        return(
-            <>
-                <div className="oferta">
-                    <img src="#" className="zdj"/>
-                    <p className="opis">asdfasdfasfdasfasfsafd</p>
-                </div>
-            </>
-        )
-    }
+interface IOfertaProps{
+    src:string,
+    opis:string
+}
+
+const Oferta = (props:IOfertaProps) => {
+    return (
+        <>
+            <div className="oferta">
+                <img src={props.src} className="zdj" />
+                <p className="opis">{props.opis}</p>
+            </div>
+        </>
+    )
 }
 
 export default Oferta;
+
