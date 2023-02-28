@@ -6,6 +6,11 @@ import IconButton from '@mui/material/IconButton';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 
+
+const x=()=>{
+  window.open("../../logowanie.html")
+}
+
 const Menus = () => {
     return(
         <>
@@ -24,7 +29,7 @@ const Menus = () => {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             News
           </Typography>
-          <Button color="inherit">Logowanie</Button>
+          <Button color="inherit" onClick={x}>Logowanie</Button>
         </Toolbar>
       </AppBar>
     </Box>
