@@ -1,11 +1,11 @@
 import Footer from "./components/Footer";
-import Menu from "./components/Menu";
+import Menus from "./components/Menus";
 import Mid from "./components/Mid";
 function App() {
 
   return (
     <>
-      <Menu/>
+      <Menus/>
       <Mid/>
       <Footer/>
     </>
