@@ -18,7 +18,7 @@ const Rejestracja = () => {
                     <i className="fa fa-key"></i>
                     <button onClick={log}>
                         <i className="spinner"></i>
-                        <span className="state">Zaloguj</span>
+                        <span className="state">Zarejestruj</span>
                     </button>
                 </form>
             </div>
