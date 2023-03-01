@@ -1,11 +1,11 @@
 import '../style/Mids.scss'
 
-interface IOfertaProps{
-    src:string,
-    opis:string
+interface IOfertaProps {
+    src: string,
+    opis: string
 }
 
-const Oferta = (props:IOfertaProps) => {
+const Oferta = (props: IOfertaProps) => {
     return (
         <>
             <div className="oferta">

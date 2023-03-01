@@ -9,7 +9,7 @@ import Logowanie from './Logowanie';
 import Konfigurator from './konfigurator/konfigurator_kompa';
 
 
-const logowanie=()=>{
+const logowanie = () => {
   ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <React.StrictMode>
       <Logowanie />
@@ -17,7 +17,7 @@ const logowanie=()=>{
   )
 }
 
-const konfigurator=()=>{
+const konfigurator = () => {
   ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <React.StrictMode>
       <Konfigurator />
@@ -26,24 +26,23 @@ const konfigurator=()=>{
 }
 
 const Menus = () => {
-    return(
-        <>
-        <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Toolbar>
-          
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            O nas
-          </Typography>
-          <Typography onClick={konfigurator} variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Konfigurator Komputerów
-          </Typography>
-          <Button color="inherit" onClick={logowanie}>Logowanie</Button>
-        </Toolbar>
-      </AppBar>
-    </Box>
-        </>
-    )
+  return (
+    <>
+      <Box sx={{ flexGrow: 1 }}>
+        <AppBar position="static">
+          <Toolbar>
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+              O nas
+            </Typography>
+            <Typography onClick={konfigurator} variant="h6" component="div" sx={{ flexGrow: 1 }}>
+              Konfigurator Komputerów
+            </Typography>
+            <Button color="inherit" onClick={logowanie}>Logowanie</Button>
+          </Toolbar>
+        </AppBar>
+      </Box>
+    </>
+  )
 }
 
 export default Menus;
