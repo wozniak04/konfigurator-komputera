@@ -4,7 +4,7 @@ const log=()=>{
     alert("asdasdadsa")
 }
 
-const Logowanie = ()=>{
+const Rejestracja = ()=>{
     return(
         <>
         
@@ -27,4 +27,4 @@ const Logowanie = ()=>{
         </>
     )
 }
-export default Logowanie;
+export default Rejestracja;
