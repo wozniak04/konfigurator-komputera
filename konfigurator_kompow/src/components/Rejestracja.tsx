@@ -10,10 +10,10 @@ const Logowanie = ()=>{
         
     <div className="wrapper">
     <form className="login">
-        <p className="title">Logowanie</p>
-        <input type="text" placeholder="Nazwa użytkownika"/>
+        <p className="title">Log in</p>
+        <input type="text" placeholder="Username"/>
         <i className="fa fa-user"></i>
-        <input type="password" placeholder="Hasło" />
+        <input type="password" placeholder="Password" />
         <i className="fa fa-key"></i>
         <a href="#">Zapomniałeś hasła?</a>
         <button onClick={log}>
