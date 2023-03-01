@@ -20,7 +20,7 @@ const Logowanie = ()=>{
         <>
         
     <div className="wrapper">
-    
+    <form className="login">
         <p className="title">Logowanie</p>
         <input type="text" placeholder="Nazwa użytkownika"/>
         <i className="fa fa-user"></i>
@@ -32,6 +32,7 @@ const Logowanie = ()=>{
             <i className="spinner"></i>
             <span className="state">Zaloguj</span>
         </button>
+  </form>
   
 
 </div>
