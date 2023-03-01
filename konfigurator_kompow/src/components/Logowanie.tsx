@@ -1,5 +1,6 @@
 
 import '../style/Logowanie.scss'
+
 const log=()=>{
     alert("asdasdadsa")
 }
