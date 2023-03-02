@@ -14,12 +14,28 @@ const conn=sql.createConnection({
     database:'database'
 });
 
-app.get('/api',(req,res)=>{
-    conn.query('SELECT * FROM users',(err,result)=>{
+app.post('/getUsers',(req,res)=>{
+    conn.query(`SELECT login,password FROM users`,(err,result)=>{
         if(err){
             console.log(err)
         }else{
-            res.send(result)
+            
+            if(result[0].login==req.body.login && result[0].password==req.body.password){
+                res.send(true)
+            }else{
+                res.send(false)
+            }
+        }
+    })
+    
+})
+
+app.post('/insertUsers',(req,res)=>{
+    conn.query(`INSERT INTO users (login,password,email) VALUE ('${req.body.login}','${req.body.password}','${req.body.email}')`,(err,result)=>{
+        if(err){
+            console.log(err)
+        }else{
+            res.send("użytkownik dodany pomyślnie")
         }
     })
 })

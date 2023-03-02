@@ -10,7 +10,7 @@ const Konfig=(props:IKonfigProps)=>{
             <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
             <div className="konf">
                 <div className="konf_wlasc">
-                    <div className="search">
+                    <div className="ssearch">
                         <TextField id="outlined-basic" variant="outlined" fullWidth label="Search"/>
                     </div>
                     <div className="komponenty">
