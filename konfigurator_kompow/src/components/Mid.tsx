@@ -1,4 +1,3 @@
-import React from "react";
 import Oferta from "./Oferta";
 
 const Mid = () => {

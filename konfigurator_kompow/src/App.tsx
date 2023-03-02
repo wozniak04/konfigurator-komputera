@@ -5,9 +5,9 @@ function App() {
 
   return (
     <>
-      <Menus/>
-      <Mid/>
-      <Footer/>
+      <Menus />
+      <Mid />
+      <Footer />
     </>
   );
 }
