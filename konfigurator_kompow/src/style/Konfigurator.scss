@@ -1,31 +1,38 @@
 .konf{
     background-color: azure;
-    display: grid;
-    grid-column-start: 1;
-    grid-column-end: 3;
+}
+.konf_wlasc{
+    margin: auto;
+    width: 50%;
 }
 .komponenty{
-    background-color: rgba(203, 203, 203, 0.293);
-    height: 9vh;
-    width: 10vw;
-    float: left;
-    margin-left: 2.3vw;
-    margin-top: 2.5vh
+    
+}
+.zdj{
+    
 }
 .search{
-    background-color: white;
-    width: 213px;
+    width: 50%;
 }
 .polecane{
-    background-color: aqua;
-    width: 533px;
-    height: 900px;
+    position: absolute;
+    right: 55px;
 }
 .komponentyPol{
-    background-color: rgba(203, 203, 203, 0.293);
-    height: 9vh;
-    width: 10vw;
-    float: left;
-    margin-left: 2.3vw;
-    margin-top: 2.5vh
+    border: 2px solid #1c5550;
+    height: 86px;
+    padding: 3px;
+}
+#btnDodaj{
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+}
+.stopka{
+    font-size: 13px;
+    background-color: rgb(197, 206, 206);
+    text-align: center;
+    width: 100vw;
+    position: absolute;
+    bottom: 0;
 }
