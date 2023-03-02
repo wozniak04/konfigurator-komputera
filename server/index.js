@@ -15,13 +15,19 @@ const conn=sql.createConnection({
 });
 
 app.post('/getUsers',(req,res)=>{
-    conn.query('SELECT * FROM users',(err,result)=>{
+    conn.query(`SELECT login,password FROM users`,(err,result)=>{
         if(err){
             console.log(err)
         }else{
-            res.send(result)
+            
+            if(result[0].login==req.body.login && result[0].password==req.body.password){
+                res.send(true)
+            }else{
+                res.send(false)
+            }
         }
     })
+    
 })
 
 app.listen(5000,()=>{
