@@ -1,5 +1,5 @@
-import React from "react";
 import TextField from "@mui/material/TextField";
+import "../style/Konfigurator.scss"
 interface IKonfigProps {
     src: string,
     opis: string

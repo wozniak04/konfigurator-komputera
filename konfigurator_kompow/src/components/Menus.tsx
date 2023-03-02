@@ -5,8 +5,8 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import React from 'react';
 import ReactDOM from 'react-dom/client'
+import Konfig from './Konfig';
 import Logowanie from './Logowanie';
-import Konfigurator from './konfigurator/konfigurator_kompa';
 
 
 const logowanie = () => {
@@ -20,7 +20,7 @@ const logowanie = () => {
 const konfigurator = () => {
   ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <React.StrictMode>
-      <Konfigurator />
+      <Konfig src={''} opis={''} />
     </React.StrictMode>
   )
 }
