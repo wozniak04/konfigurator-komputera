@@ -30,6 +30,16 @@ app.post('/getUsers',(req,res)=>{
     
 })
 
+app.post('/insertUsers',(req,res)=>{
+    conn.query(`INSERT INTO users (login,password,email) VALUE ('${req.body.login}','${req.body.password}','${req.body.email}')`,(err,result)=>{
+        if(err){
+            console.log(err)
+        }else{
+            res.send("użytkownik dodany pomyślnie")
+        }
+    })
+})
+
 app.listen(5000,()=>{
     console.log('server port 5000');
 });
