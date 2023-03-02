@@ -26,23 +26,23 @@ const konfigurator = () => {
 }
 
 const Menus = () => {
-  return (
-    <>
-      <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static">
-          <Toolbar>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              O nas
-            </Typography>
-            <Typography onClick={konfigurator} variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              Konfigurator Komputerów
-            </Typography>
-            <Button color="inherit" onClick={logowanie}>Logowanie</Button>
-          </Toolbar>
-        </AppBar>
-      </Box>
-    </>
-  )
+  return <MenuLayout />
 }
 
 export default Menus;
+
+const MenuLayout = () => (
+  <Box sx={{ flexGrow: 1 }}>
+    <AppBar position="static">
+      <Toolbar>
+        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          O nas
+        </Typography>
+        <Typography onClick={konfigurator} variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          Konfigurator Komputerów
+        </Typography>
+        <Button color="inherit" onClick={logowanie}>Logowanie</Button>
+      </Toolbar>
+    </AppBar>
+  </Box>
+)
