@@ -14,7 +14,7 @@ const conn=sql.createConnection({
     database:'database'
 });
 
-app.get('/api',(req,res)=>{
+app.post('/getUsers',(req,res)=>{
     conn.query('SELECT * FROM users',(err,result)=>{
         if(err){
             console.log(err)
