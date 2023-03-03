@@ -4,10 +4,6 @@ import ReactDOM from 'react-dom/client';
 import '../style/Logowanie.scss';
 import Rejestracja from './Rejestracja';
 
-
-
-
-
 const rejestracja = () => {
     ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
         <React.StrictMode>

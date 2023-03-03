@@ -17,7 +17,7 @@ function App() {
           <Footer />
         </>}>
         </Route>
-        <Route path="/Konfig" element={<Konfig src={""} opis={""} />}/>
+        <Route path="/Konfig" element={<Konfig src={""} opis={""} />} />
       </Routes>
     </>
   );
