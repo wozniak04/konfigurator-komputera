@@ -6,7 +6,11 @@ import Typography from '@mui/material/Typography';
 import React from 'react';
 import ReactDOM from 'react-dom/client'
 import { useNavigate } from 'react-router';
-import { NavigateFunction } from 'react-router/dist/lib/hooks';
+import { BrowserRouter as Router,
+Routes,
+Route,
+Link } from 'react-router-dom';
+
 import Konfig from './Konfig';
 import Logowanie from './Logowanie';
 
@@ -22,31 +26,33 @@ import Logowanie from './Logowanie';
 // }
 
 const Menus = () => {
-  const navigate = useNavigate()
-  function logSubmit(event) {
-    navigate("/Logowanie.tsx", {replace: true})
-  }
-  return <MenuLayout />
+ 
+  return <MenuLayout/>
 }
 
 export default Menus;
 
-interface imenulayoutprops {
-  navigate: NavigateFunction
-}
 
-const MenuLayout = (props:imenulayoutprops) => (
-  <Box sx={{ flexGrow: 1 }}>
-    <AppBar position="static">
-      <Toolbar>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          O nas
-        </Typography>
-        <Typography onClick={()=>props.navigate("/konfigurator")} variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          Konfigurator Komputerów
-        </Typography>
-        <Button color="inherit" onClick={logSubmit}>Logowanie</Button>
-      </Toolbar>
-    </AppBar>
-  </Box>
+const MenuLayout = () => (
+<>
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static">
+        <Toolbar>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            O nas
+          </Typography>
+          <Typography  variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Link to="/Konfigurator_Kompow">Konfigurator Komputerów</Link>
+          </Typography>
+          <Button color="inherit"><Link to="/logowanie">Logowanie</Link></Button>
+        </Toolbar>
+      </AppBar>
+    </Box>
+
+    <Routes>
+      <Route path="/logowanie" element={<Logowanie/>}/>
+      <Route path="/Konfigurator_Kompow" element={<Konfig src="#" opis=""/>}/>
+    </Routes>
+</>
+
 )
