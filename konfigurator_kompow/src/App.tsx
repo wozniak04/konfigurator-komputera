@@ -4,6 +4,7 @@ import Konfig from "./components/Konfig";
 import Logowanie from "./components/Logowanie";
 import Menus from "./components/Menus";
 import Mid from "./components/Mid";
+import Rejestracja from "./components/Rejestracja";
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
         </>}>
         </Route>
         <Route path="/Konfig" element={<Konfig src={""} opis={""} />} />
+        <Route path="/Rejestracja" element={<Rejestracja/>}/>
       </Routes>
     </>
   );

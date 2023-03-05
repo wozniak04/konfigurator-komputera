@@ -1,8 +1,10 @@
 import axios from "axios";
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
+import { useNavigate } from "react-router-dom";
 import '../style/Logowanie.scss';
 import Rejestracja from './Rejestracja';
+import App from "../App";
 
 const rejestracja = () => {
     ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
@@ -16,15 +18,17 @@ const Logowanie = () => {
 
     const [login, setlogin] = useState('')
     const [password, setpassword] = useState('')
-
+    const navigate = useNavigate();
 
     const log = () => {
-
+        
         axios.post('http://localhost:5000/getUsers', {
             login: login,
             password: password
-        }).then((res) => {
-            console.log(res.data)
+        }).then((res) => {           
+            if(res.data){
+                navigate('/')
+            }
         })
 
 
