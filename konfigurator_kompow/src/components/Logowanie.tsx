@@ -28,9 +28,6 @@ const Logowanie = () => {
 
 
     }
-    const rej=()=>{
-        navigate('/Rejestracja')
-    }
     const handleloginchange = (value: string) => {
         setlogin(value)
     }
@@ -41,7 +38,6 @@ const Logowanie = () => {
 
     const temp: ILogowanieLayoutProps = {
         loginto: log,
-        rejestracja: rej,
         login,
         password,
         handleloginchange: handleloginchange,
@@ -52,7 +48,6 @@ const Logowanie = () => {
 }
 interface ILogowanieLayoutProps {
     loginto: () => void,
-    rejestracja:()=>void,
     login: string,
     password: string,
     handleloginchange: (value: string) => void,
@@ -67,8 +62,7 @@ const LogowanieLayout = (props: ILogowanieLayoutProps) => (
             <i className="fa fa-user"></i>
             <input type="password" placeholder="Hasło" value={props.password} onChange={event => props.handlepasswordchange(event.target.value)} />
             <i className="fa fa-key"></i>
-            <a href="#" className='forgot'>Zapomniałeś hasła?</a>
-            <a href="#" className='create' onClick={props.rejestracja}>Stwórz konto</a>
+            <a href="/Rejestracja" className='create'>Stwórz konto</a>
             <button onClick={() => props.loginto()}>
                 <i className="spinner"></i>
                 <span className="state">Zaloguj</span>
