@@ -2,21 +2,26 @@ import axios from "axios";
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import '../style/Logowanie.scss';
+import Cookies from "universal-cookie";
 
 const Logowanie = () => {
 
     const [login, setlogin] = useState('')
     const [password, setpassword] = useState('')
     const navigate = useNavigate();
-
+    const cookies=new Cookies();
+cookies.remove('idSession');
     const log = () => {
         
         axios.post('http://localhost:5000/getUsers', {
             login: login,
             password: password
         }).then((res) => {           
-            if(res.data){
+            if(res.data.log){
+                cookies.set('idSession',res.data.idSession)
                 navigate('/')
+            }else{
+                alert('zły login lub hasło')
             }
         })
 
