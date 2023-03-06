@@ -3,6 +3,7 @@ import Footer from "./components/Footer";
 import Konfig from "./components/Konfig";
 import Logowanie from "./components/Logowanie";
 import Menus from "./components/Menus";
+import Chat from './components/Chat';
 import Mid from "./components/Mid";
 import Rejestracja from "./components/Rejestracja";
 
@@ -15,6 +16,7 @@ function App() {
           <Menus />
           <Mid />
           <Footer />
+          <Chat />
         </>}>
         </Route>
         <Route path="/Konfig" element={<Konfig src={""} opis={""} />} />

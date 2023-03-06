@@ -1,4 +1,4 @@
-import '../style/Mids.scss'
+import '../style/Mids.scss';
 
 interface IOfertaProps {
     src: string,
@@ -6,7 +6,7 @@ interface IOfertaProps {
 }
 
 const Oferta = (props: IOfertaProps) => {
-    return <OfertaLayout src={''} opis={''} />
+    return <OfertaLayout src={props.src} opis={props.opis} />
 }
 
 export default Oferta;
@@ -17,4 +17,3 @@ const OfertaLayout = (props: IOfertaProps) => (
         <p className="opis">{props.opis}</p>
     </div>
 )
-
