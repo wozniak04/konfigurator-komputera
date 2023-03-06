@@ -17,7 +17,7 @@
 }
 .search{
     width: 70%;
-    
+    margin: auto
 }
 .polecane{
     position: absolute;
@@ -29,22 +29,15 @@
     border: 2px solid #1c5550;
     height: 86px;
     padding: 3px;
+    clear: both;
+    display: table;
 }
 #btnDodaj{
     position: absolute;
     right: 8px;
     bottom: 8px;
 }
-#btnDodaj2{
-    position: absolute;
-    right: 8px;
-    bottom: 8px;
-}
-#btnDodaj3{
-    position: absolute;
-    right: 8px;
-    bottom: 8px;
-}
+
 .stopka{
     font-size: 13px;
     background-color: rgb(197, 206, 206);
