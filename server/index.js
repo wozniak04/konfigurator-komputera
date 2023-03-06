@@ -49,10 +49,10 @@ app.post('/getUsers',(req,res)=>{
 
             if(result.length>0) {
                 let rand=Math.random()*27212;
-                user = result[0].login + result[0].password + result[0].email+rand;
+                user = rand+result[0].login + result[0].password + result[0].email+rand;
                res.send({
                     log:true,
-                    idSession: result[0].login + result[0].password + result[0].email+rand
+                    idSession: rand+result[0].login + result[0].password + result[0].email+rand
                 })   
                 
                             
@@ -68,6 +68,21 @@ app.post('/getUsers',(req,res)=>{
     
 })
 
+app.post('/getLogin',(req, res)=>{
+    conn.query(`SELECT login FROM users WHERE login='${req.body.login}' ;`,(err,result)=>{
+        if(err){
+            console.log(err)
+        }else{
+            if(result.length>0) {
+                res.send(false)                           
+            } 
+            else {
+                res.send(true)
+            }
+        }
+    })
+})
+
 app.post('/insertUsers',(req,res)=>{
     conn.query(`INSERT INTO users (login,password,email) VALUE ('${req.body.login}','${req.body.password}','${req.body.email}')`,(err,result)=>{
         if(err){
@@ -77,10 +92,10 @@ app.post('/insertUsers',(req,res)=>{
             }) 
         }else{
             let rand=Math.random()*27212;
-            user = result[0].login + result[0].password + result[0].email+rand
+            user = rand+req.body.login + req.body.password + req.body.email+rand
             res.send({
                 log:true,
-                idSession: result[0].login + result[0].password + result[0].email+rand
+                idSession: rand+req.body.login + req.body.password + req.body.email+rand
             })   
             
         }

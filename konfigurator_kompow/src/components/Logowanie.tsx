@@ -10,7 +10,8 @@ const Logowanie = () => {
     const [password, setpassword] = useState('')
     const navigate = useNavigate();
     const cookies=new Cookies();
-cookies.remove('idSession');
+    cookies.remove('idSession');
+
     const log = () => {
         
         axios.post('http://localhost:5000/getUsers', {
@@ -23,6 +24,8 @@ cookies.remove('idSession');
             }else{
                 alert('zły login lub hasło')
             }
+        }).catch((err) => {
+            console.log(err)
         })
 
 
