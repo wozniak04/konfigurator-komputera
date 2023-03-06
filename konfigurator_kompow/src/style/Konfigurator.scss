@@ -3,20 +3,27 @@
 }
 .konf_wlasc{
     margin: auto;
-    width: 50%;
+    width: 45%;
+    padding-top: 20px;
 }
 .komponenty{
-    
+    width: 100%;
+    border: 2px solid #1c5550;
+    height: 450px;
 }
 .zdj{
-    
+    max-width: 200px;
+    max-height: 150px;
 }
 .search{
-    width: 50%;
+    width: 70%;
+    
 }
 .polecane{
     position: absolute;
     right: 55px;
+    top: 100px;
+    margin: auto;
 }
 .komponentyPol{
     border: 2px solid #1c5550;
@@ -24,6 +31,16 @@
     padding: 3px;
 }
 #btnDodaj{
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+}
+#btnDodaj2{
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+}
+#btnDodaj3{
     position: absolute;
     right: 8px;
     bottom: 8px;

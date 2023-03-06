@@ -10,7 +10,7 @@ const Konfig=(props:IKonfigProps)=>{
             <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
             <div className="konf">
                 <div className="konf_wlasc">
-                    <div className="ssearch">
+                    <div className="search">
                         <TextField id="outlined-basic" variant="outlined" fullWidth label="Search"/>
                     </div>
                     <div className="komponenty">
@@ -22,8 +22,18 @@ const Konfig=(props:IKonfigProps)=>{
                     <h3>Polecane komponenty do komputerów:</h3>
                     <div className="komponentyPol">
                         <img src={props.src} className="zdj"/>
-                        <p className="opis">{props.opis}</p>
+                        <p className="opis">Lorem ipsum</p>
                         <button id="btnDodaj">Dodaj</button>
+                    </div>
+                    <div className="komponentyPol">
+                        <img src={props.src} className="zdj"/>
+                        <p className="opis">Lorem ipsum</p>
+                        <button id="btnDodaj2">Dodaj</button>
+                    </div>
+                    <div className="komponentyPol">
+                        <img src={props.src} className="zdj"/>
+                        <p className="opis">Lorem ipsum</p>
+                        <button id="btnDodaj3">Dodaj</button>
                     </div>
                 </div>
                 <div className="stopka">
