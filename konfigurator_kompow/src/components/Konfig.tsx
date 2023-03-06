@@ -25,6 +25,16 @@ const Konfig=(props:IKonfigProps)=>{
                         <p className="opis">{props.opis}</p>
                         <button id="btnDodaj">Dodaj</button>
                     </div>
+                    <div className="komponentyPol2">
+                        <img src={props.src} className="zdj"/>
+                        <p className="opis">{props.opis}</p>
+                        <button id="btnDodaj2">Dodaj</button>
+                    </div>
+                    <div className="komponentyPol3">
+                        <img src={props.src} className="zdj"/>
+                        <p className="opis">{props.opis}</p>
+                        <button id="btnDodaj3">Dodaj</button>
+                    </div>
                 </div>
                 <div className="stopka">
                         &#169; 2023 Jakub Błażk, Mikołaj Woźniak, Michał Ruc
