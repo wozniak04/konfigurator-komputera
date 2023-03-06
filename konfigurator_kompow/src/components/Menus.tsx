@@ -10,7 +10,8 @@ import { Navigate } from 'react-router-dom';
 
 const Menus = () => {
   const navigate=useNavigate()
-  
+
+  useEffect(()=>{
 axios.get('http://localhost:5000/sessionCheck', { withCredentials: true })
     .then((res) => {
       if (!res.data) 
@@ -19,7 +20,7 @@ axios.get('http://localhost:5000/sessionCheck', { withCredentials: true })
       .catch((err)=>{
         console.log(err)
         navigate('/Logowanie')
-      })
+      })},[])
 
 
   
