@@ -48,3 +48,4 @@ const Konfig=(props:IKonfigProps)=>{
     )
 }
 export default Konfig;
+/** {props.opis}*/
