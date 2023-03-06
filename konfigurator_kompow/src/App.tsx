@@ -11,7 +11,6 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/Logowanie" element={<Logowanie />} />
         <Route path="/" element={<>
           <Menus />
           <Mid />
@@ -19,6 +18,7 @@ function App() {
         </>}>
         </Route>
         <Route path="/Konfig" element={<Konfig src={""} opis={""} />} />
+        <Route path="/Logowanie" element={<Logowanie />} />
         <Route path="/Rejestracja" element={<Rejestracja/>}/>
       </Routes>
     </>
