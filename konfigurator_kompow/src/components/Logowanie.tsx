@@ -1,13 +1,7 @@
 import axios from "axios";
-import React, { useState } from 'react';
-import ReactDOM from 'react-dom/client';
+import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import '../style/Logowanie.scss';
-import Rejestracja from './Rejestracja';
-import App from "../App";
-
-
-
 
 const Logowanie = () => {
 

@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
+import '../style/Menus.scss'
 
 const Menus = () => {
 
@@ -20,9 +21,9 @@ const MenuLayout = () => (
 					O nas
 				</Typography>
 				<Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-					<Link to="/Konfig">Konfigurator komputerów</Link>
+					<Link to="/Konfig" className='button'>Konfigurator komputerów</Link>
 				</Typography>
-				<Button color="inherit"><Link to={"/Logowanie"}>Logowanie</Link></Button>
+				<Link to={"/Logowanie"} className='button'>Logowanie</Link>
 			</Toolbar>
 		</AppBar>
 	</Box>
