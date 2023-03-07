@@ -1,5 +1,6 @@
 import TextField from "@mui/material/TextField";
 import "../style/Konfigurator.scss"
+import "../style/Komponenty.scss"
 import Komponenty from "./Komponenty";
 import Konfigurator from "./KonfigProps";
 import KompPol from "./KomponentyPol";
@@ -22,6 +23,8 @@ const KonfigLayout=()=>{
                 </div>
                 <div className="polecane">
                     <h3>Polecane komponenty do komputerów:</h3>
+                    <KompPol src="" opis=""/>
+                    <KompPol src="" opis=""/>
                     <KompPol src="" opis=""/>
                 </div>
                 <div className="stopka">
