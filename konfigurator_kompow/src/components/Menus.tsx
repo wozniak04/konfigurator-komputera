@@ -40,7 +40,7 @@ const MenuLayout = () => (
     <AppBar position="static">
       <Toolbar>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          O nas
+          <Link to="/" className='button'>Strona główna</Link>
         </Typography>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           <Link to="/Konfig" className='button'>Konfigurator komputerów</Link>
