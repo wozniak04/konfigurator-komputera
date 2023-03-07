@@ -9,8 +9,8 @@ const bodyParser=require('body-parser')
 
 const insertsesja=(user,uuid)=>{
     const data=new Date()
-    //console.log(data.get)
-    //conn.query(`INSERT INTO sesje (username,uid,expiration) VALUE ('${user}','${uuid}','${data}')`)
+    console.log(data)
+    conn.query(`INSERT INTO sesje (username,uid,expiration) VALUE ('${user}','${uuid}','${data}')`)
 }
 
 const expiration=(user,uuid)=>{
@@ -114,5 +114,5 @@ app.post('/insertUsers',(req,res)=>{
 
 app.listen(5000,()=>{
     console.log('server port 5000');
-    insertsesja('asd',2);
+    insertsesja('admin','be723eed-908c-4339-af4f-c2e0bbb97fad');
 });
