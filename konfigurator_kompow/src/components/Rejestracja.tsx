@@ -133,14 +133,14 @@ const RejestracjaLayout = (props: IRejestracjaProps) => (
         <div className="login">
             <p className="title">Rejestracja</p>
             <input type="email" placeholder="Email" value={props.email} onBlur={() => props.wal(1)} onChange={(event) => props.handleEmail(event.target.value)} />
-            <p hidden={props.bladE}>błąd emaila</p>
+            <p hidden={props.bladE} className="error">Niepoprawny email</p>
             <input type="text" placeholder="Nazwa użytkownika" value={props.login} onBlur={() => props.wal(4)} onChange={(e) => { props.handleLogin(e.target.value) }} />
-            <p hidden={props.bladL}>użytkownik o takiej nazwie istnieje</p>
+            <p hidden={props.bladL} className="error">Taka nazwa użytkownika jest już użyta</p>
             <i className="fa fa-user"></i>
             <input type="password" placeholder="Hasło" value={props.password1} onBlur={() => props.wal(2)} onChange={(event) => props.handlePassword1(event?.target.value)} />
-            <p hidden={props.bladH}>hasło powinno zawierać 8 liter 1 duza 1 mala i liczbe</p>
+            <p hidden={props.bladH} className="error">Hasło powinno zawierać 8 liter, co najmniej 1 dużą, 1 małą i 1 liczbę</p>
             <input type="password" placeholder="Powtórz hasło" value={props.password2} onBlur={() => props.wal(3)} onChange={(event) => props.handlePassword2(event.target.value)} />
-            <p hidden={props.bladHP}>hasła są różne</p>
+            <p hidden={props.bladHP} className="error">Hasła różnią się od siebie</p>
             <i className="fa fa-key"></i>
             <button onClick={props.rejestruj}>
                 <i className="spinner"></i>

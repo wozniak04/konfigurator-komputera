@@ -73,7 +73,7 @@ const LogowanieLayout = (props: ILogowanieLayoutProps) => (
                 <span className="state">Zaloguj</span>
             </button>
         </div>
-        <p hidden={props.blad}>złe dane</p>
+        <p hidden={props.blad} className="error">Niepoprawne dane</p>
     </div>
 )
 
