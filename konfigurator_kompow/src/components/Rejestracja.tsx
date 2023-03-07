@@ -132,9 +132,9 @@ const RejestracjaLayout = (props: IRejestracjaProps) => (
     <div className="wrapper">
         <div className="login">
             <p className="title">Rejestracja</p>
-            <input type="email" placeholder="Email" value={props.email} onBlur={() => props.wal(1)} onChange={(event) => props.handleEmail(event.target.value)} />
+            <input type="email" placeholder="Email" maxLength={50} value={props.email} onBlur={() => props.wal(1)} onChange={(event) => props.handleEmail(event.target.value)} />
             <p hidden={props.bladE} className="error">Niepoprawny email</p>
-            <input type="text" placeholder="Nazwa użytkownika" value={props.login} onBlur={() => props.wal(4)} onChange={(e) => { props.handleLogin(e.target.value) }} />
+            <input type="text" placeholder="Nazwa użytkownika" maxLength={50} value={props.login} onBlur={() => props.wal(4)} onChange={(e) => { props.handleLogin(e.target.value) }} />
             <p hidden={props.bladL} className="error">Taka nazwa użytkownika jest już użyta</p>
             <i className="fa fa-user"></i>
             <input type="password" placeholder="Hasło" value={props.password1} onBlur={() => props.wal(2)} onChange={(event) => props.handlePassword1(event?.target.value)} />

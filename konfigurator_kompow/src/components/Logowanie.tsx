@@ -63,7 +63,7 @@ const LogowanieLayout = (props: ILogowanieLayoutProps) => (
     <div className="wrapper">
         <div className="login">
             <p className="title">Logowanie</p>
-            <input type="text" placeholder="Nazwa użytkownika" value={props.login} onChange={event => props.handleloginchange(event.target.value)} />
+            <input type="text" maxLength={50} placeholder="Nazwa użytkownika" value={props.login} onChange={event => props.handleloginchange(event.target.value)} />
             <i className="fa fa-user"></i>
             <input type="password" placeholder="Hasło" value={props.password} onChange={event => props.handlepasswordchange(event.target.value)} />
             <i className="fa fa-key"></i>

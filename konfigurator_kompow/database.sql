@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 07 Mar 2023, 12:52
+-- Czas generowania: 07 Mar 2023, 13:54
 -- Wersja serwera: 10.4.27-MariaDB
 -- Wersja PHP: 8.2.0
 
@@ -29,8 +29,9 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `sesje` (
   `id` int(255) NOT NULL,
-  `username` int(11) NOT NULL,
-  `uid` varchar(100) NOT NULL
+  `username` varchar(50) NOT NULL,
+  `uid` varchar(100) NOT NULL,
+  `expiration` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
 -- --------------------------------------------------------
@@ -41,9 +42,9 @@ CREATE TABLE `sesje` (
 
 CREATE TABLE `users` (
   `id` int(200) NOT NULL,
-  `login` varchar(16) NOT NULL,
-  `password` varchar(16) NOT NULL,
-  `email` varchar(16) NOT NULL
+  `login` varchar(50) NOT NULL,
+  `password` varchar(36) NOT NULL,
+  `email` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
 --
