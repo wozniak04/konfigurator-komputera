@@ -6,12 +6,12 @@
     width: 45%;
     padding-top: 20px;
 }
-.komponenty{
+.komponent{
     border: 2px solid #1c5550;
     position:relative;
     background-color: rgba(203, 203, 203, 0.293);
     height: 27vh;
-    width: 30vw;
+    width: 31vw;
     float: left;
     margin-left: 2.3vw;
     margin-top: 2.5vh;
@@ -59,4 +59,10 @@
     width: 100vw;
     position: absolute;
     bottom: 0;
+}
+.opis{
+    float: left;
+    margin-left: 1vw;
+    font-size: 1rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }

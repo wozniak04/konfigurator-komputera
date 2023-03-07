@@ -15,10 +15,13 @@ const KonfigLayout=()=>{
                     <div className="search">
                         <TextField id="outlined-basic" variant="outlined" fullWidth label="Szukaj"/>
                     </div>
-                    <div className="komponenty">
-                        <div>
-                        </div>
+                    <div className="komponent">
+
                     </div>
+                    <div className="komponent">
+
+                    </div>
+                    
                 </div>
                 <div className="polecane">
                     <h3>Polecane komponenty do komputerów:</h3>
@@ -28,11 +31,10 @@ const KonfigLayout=()=>{
                 </div>
                 <div className="stopka">
                         &#169; 2023 Jakub Błażk, Mikołaj Woźniak, Michał Ruc
-                        <h4>Kontakt:</h4>E-mail: kontakt@strona.com<br></br>
-                        Telefon: 123-456-789
+                        <h4>Kontakt:</h4>E-mail: kontakt@strona.com Telefon: 123-456-789
                         <h4><a href="">Warunki</a></h4>
                         <h4><a href="">Pomoc</a></h4>
-                    </div>
+                </div>
             </div>
         </>
     )
