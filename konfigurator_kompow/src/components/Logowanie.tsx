@@ -8,6 +8,7 @@ const Logowanie = () => {
 
     const [login, setlogin] = useState('')
     const [password, setpassword] = useState('')
+    const [blad,setblad]=useState(true)
     const navigate = useNavigate();
     const cookies=new Cookies();
     cookies.remove('idSession');
@@ -22,7 +23,7 @@ const Logowanie = () => {
                 cookies.set('idSession',res.data.idSession)
                 navigate('/')
             }else{
-                alert('zły login lub hasło')
+                setblad(false) 
             }
         }).catch((err) => {
             console.log(err)
@@ -43,7 +44,8 @@ const Logowanie = () => {
         login,
         password,
         handleloginchange: handleloginchange,
-        handlepasswordchange: handlepasswordchange
+        handlepasswordchange: handlepasswordchange,
+        blad
     }
 
     return <LogowanieLayout {...temp} />
@@ -53,7 +55,8 @@ interface ILogowanieLayoutProps {
     login: string,
     password: string,
     handleloginchange: (value: string) => void,
-    handlepasswordchange: (value: string) => void
+    handlepasswordchange: (value: string) => void,
+    blad:boolean
 }
 
 const LogowanieLayout = (props: ILogowanieLayoutProps) => (
@@ -70,6 +73,7 @@ const LogowanieLayout = (props: ILogowanieLayoutProps) => (
                 <span className="state">Zaloguj</span>
             </button>
         </div>
+        <p hidden={props.blad}>złe dane</p>
     </div>
 )
 
