@@ -5,6 +5,7 @@ const sql = require('mysql');
 const cors = require('cors');
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
+const bcrypt = require('bcrypt')
 
 app.use(cors({
     origin: 'http://localhost:5173',
@@ -81,33 +82,39 @@ app.get('/sessionCheck', (req, res) => {
             }
         })
 
-    }else{
+    } else {
         res.send(false)
     }
-    
+
 })
 
-app.post('/getUsers', (req, res) => {
-    conn.query(`SELECT login,password,email FROM users WHERE login='${req.body.login}' AND password='${req.body.password}';`, (err, result) => {
+app.post('/getUsers', async (req, res) => {
+    conn.query(`SELECT login,password,email FROM users WHERE login='${req.body.login}';`, (err, result) => {
         if (err) {
             console.log(err)
         } else {
 
             if (result.length > 0) {
+                if (bcrypt.compare(req.body.password, result[0].password)) {
 
-                let user = uuid.v4()
-                insertsesja(req.body.login, user)
+                    let user = uuid.v4()
+                    insertsesja(req.body.login, user)
+                    res.send({
+                        log: true,
+                        idSession: user
+                    })
+
+
+                }
+                else {
+                    res.send({
+                        log: false
+
+                    })
+                }
+            } else {
                 res.send({
-                    log: true,
-                    idSession: user
-                })
-
-
-            }
-            else {
-                res.send({
-                    log: false,
-
+                    log: false
                 })
             }
         }
@@ -130,8 +137,10 @@ app.post('/getLogin', (req, res) => {
     })
 })
 
-app.post('/insertUsers', (req, res) => {
-    conn.query(`INSERT INTO users (login,password,email) VALUE ('${req.body.login}','${req.body.password}','${req.body.email}')`, (err, result) => {
+app.post('/insertUsers', async (req, res) => {
+
+    const hashpassword = await bcrypt.hash(req.body.password, 10)
+    conn.query(`INSERT INTO users (login,password,email) VALUE ('${req.body.login}','${hashpassword}','${req.body.email}')`, (err, result) => {
         if (err) {
             console.log(err)
             res.send({

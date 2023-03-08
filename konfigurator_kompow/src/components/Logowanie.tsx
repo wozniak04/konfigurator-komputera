@@ -11,7 +11,8 @@ const Logowanie = () => {
   const navigate = useNavigate();
   const cookies = new Cookies();
   cookies.remove("idSession");
-  cookies.remove("user")
+  cookies.remove("user");
+
   const log = () => {
     axios
       .post("http://localhost:5000/getUsers", {
