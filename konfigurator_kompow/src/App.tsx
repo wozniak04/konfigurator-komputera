@@ -19,7 +19,7 @@ function App() {
           <Chat />
         </>}>
         </Route>
-        <Route path="/Konfig" element={<Konfig src={""} opis={""} />} />
+        <Route path="/Konfig" element={<Konfig/>} />
         <Route path="/Logowanie" element={<Logowanie />} />
         <Route path="/Rejestracja" element={<Rejestracja/>}/>
       </Routes>

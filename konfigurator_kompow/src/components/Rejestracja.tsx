@@ -35,6 +35,7 @@ const Rejestracja = () => {
                 .then((res) => {
                     if (res.data.log) {
                         cookies.set('idSession', res.data.idSession)
+                        cookies.set("user",login)
                         navigate('/')
                     }
                     else {

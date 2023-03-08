@@ -1,7 +1,24 @@
-import React from "react";
+import React,{useEffect} from "react";
+import axios from "axios";
+import { useNavigate } from "react-router";
 import '../style/Chat.scss'
 
 const Chat = () => {
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+      axios
+        .get("http://localhost:5000/sessionCheck", { withCredentials: true })
+        .then((res) => {
+          if (!res.data) navigate("/Logowanie");
+        })
+        .catch((err) => {
+          console.log(err);
+          navigate("/Logowanie");
+        });
+    });
+
     const [open, setIsOpen] = React.useState(true)
     const closeForm = () => {
         if(open===true)
