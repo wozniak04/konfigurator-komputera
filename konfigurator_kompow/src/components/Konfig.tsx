@@ -3,6 +3,7 @@ import "../style/Konfigurator.scss"
 import Komponenty from "./Komponenty";
 import Konfigurator from "./KonfigProps";
 import KompPol from "./KomponentyPol";
+import '../style/Footer.scss'
 const Konfigur=()=>{
     return <KonfigLayout />
 }
@@ -15,25 +16,57 @@ const KonfigLayout=()=>{
                     <div className="search">
                         <TextField id="outlined-basic" variant="outlined" fullWidth label="Szukaj"/>
                     </div>
-                    <div className="komponent">
-
+                    <div className="komponent" id="procesor">
+                        <h3>Procesor</h3>
+                        <Konfigurator src="" opis=""/>
                     </div>
-                    <div className="komponent">
-
+                    <div className="komponent" id="plyta-glowna">
+                        <h3>Płyta Główna</h3>
+                        <Konfigurator src="" opis=""/>
                     </div>
-                    
+                    <div className="komponent" id="karta-graficzna">
+                        <h3>Karta graficzna</h3>
+                        <Konfigurator src="" opis=""/>
+                    </div>
+                    <div className="komponent" id="ram">
+                        <h3>Pamięć RAM</h3>
+                        <Konfigurator src="" opis=""/>
+                    </div>
+                    <div className="komponent" id="hdd">
+                        <h3>Pamięć HDD</h3>   
+                        <Konfigurator src="" opis=""/>
+                    </div>
+                    <div className="komponent" id="ssd">
+                        <h3>Pamięć SSD</h3>
+                        <Konfigurator src="" opis=""/>
+                    </div>
+                    <div className="komponent" id="zasilacz">
+                        <h3>Zasilacz</h3>
+                        <Konfigurator src="" opis=""/>
+                    </div>
+                    <div className="komponent" id="obudowa">
+                        <h3>Obudowa</h3>
+                        <Konfigurator src="" opis=""/>
+                    </div>
                 </div>
                 <div className="polecane">
                     <h3>Polecane komponenty do komputerów:</h3>
-                    <KompPol src="" opis=""/>
-                    <KompPol src="" opis=""/>
-                    <KompPol src="" opis=""/>
+                    <div>
+                        <KompPol src="" opis=""/>
+                    </div>
+                    <div>
+                        <KompPol src="" opis=""/>
+                    </div>
+                    <div>
+                        <KompPol src="" opis=""/>
+                    </div>
                 </div>
                 <div className="stopka">
-                        &#169; 2023 Jakub Błażk, Mikołaj Woźniak, Michał Ruc
-                        <h4>Kontakt:</h4>E-mail: kontakt@strona.com Telefon: 123-456-789
-                        <h4><a href="">Warunki</a></h4>
-                        <h4><a href="">Pomoc</a></h4>
+                    &#169; 2023 Jakub Błażk, Mikołaj Woźniak, Michał Ruc
+                    <h4>Kontakt:</h4>E-mail: kontakt@strona.com<br></br>
+                    Telefon: 123-456-789
+                    <h4><a href="">Warunki</a></h4>
+                    <h4><a href="">Pomoc</a></h4>
                 </div>
             </div>
         </>
