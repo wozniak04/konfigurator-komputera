@@ -16,10 +16,12 @@ function App() {
           <Menus />
           <Mid />
           <Footer />
-          <Chat />
         </>}>
         </Route>
-        <Route path="/Konfig" element={<Konfig/>} />
+        <Route path="/Konfig" element={<>
+        <Konfig/>
+        <Chat />
+        </>} />
         <Route path="/Logowanie" element={<Logowanie />} />
         <Route path="/Rejestracja" element={<Rejestracja/>}/>
       </Routes>
