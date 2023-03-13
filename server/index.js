@@ -6,6 +6,7 @@ const cors = require('cors')
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const bcrypt = require('bcrypt')
+const {Configuration,OpenAIApi}=require('openai')
 
 app.use(cors({
     origin: 'http://localhost:5173',
@@ -14,6 +15,22 @@ app.use(cors({
 app.use(cookieParser())
 app.use(express.json())
 app.use(bodyParser.urlencoded({ extended: true }))
+const configuration=new Configuration({
+    apiKey:'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'
+})
+const openAI=new OpenAIApi(configuration)
+
+const zapytanieAi=async (pyt)=>{
+    const res=await openAI.createCompletion({
+        model:'text-davinci-003',
+        prompt:pyt,
+        max_tokens:1000,
+        temperature:1
+    })
+    console.log(res.data.choices[0].text)
+    return res.data.choices[0].text
+}
+
 
 const conn = sql.createConnection({
     host: 'localhost',
@@ -158,9 +175,16 @@ app.post('/insertUsers', async (req, res) => {
     })
 })
 
+app.post('/ZapytanieAi',async (req,res)=>{
+
+    const odp=await zapytanieAi(`odpowiedz na to, jeżeli jest to związane z komputerami lub komponentami komputera, jeżeli nie to nie bierz tego pod uwage i wtedy i tylko wtedy odpowiedz nie odpowiadam na takie pytania' :${req.body.zapytanie}?`)
+
+    res.send(odp)
+
+})
 
 
 app.listen(5000, () => {
-    console.log('server port 5000');
+    console.log('server port 5000')
 
-});
+})
