@@ -1,6 +1,7 @@
 import TextField from "@mui/material/TextField";
 import "../style/Konfigurator.scss"
 import Komponenty from "./Komponenty";
+import Menus from "./Menus";
 import Konfigurator from "./KonfigProps";
 import KompPol from "./KomponentyPol";
 import '../style/Footer.scss'
@@ -10,6 +11,7 @@ const Konfigur=()=>{
 const KonfigLayout=()=>{
     return(
         <>
+        <Menus/>
             <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
             <div className="konf">
                 <div className="konf_wlasc">
