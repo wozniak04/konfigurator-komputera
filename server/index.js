@@ -1,8 +1,8 @@
 const uuid = require('uuid')
-const express = require('express');
+const express = require('express')
 const app = express();
-const sql = require('mysql');
-const cors = require('cors');
+const sql = require('mysql')
+const cors = require('cors')
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const bcrypt = require('bcrypt')
@@ -12,7 +12,7 @@ app.use(cors({
     credentials: true
 }));
 app.use(cookieParser())
-app.use(express.json());
+app.use(express.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 const conn = sql.createConnection({
@@ -21,7 +21,7 @@ const conn = sql.createConnection({
     password: '',
     database: 'database',
     dateStrings: true
-});
+})
 
 const deletesesja = async (user) => {
     conn.query(`DELETE FROM sesje WHERE username='${user}'`, (err) => {
