@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 07 Mar 2023, 13:54
+-- Czas generowania: 13 Mar 2023, 13:59
 -- Wersja serwera: 10.4.27-MariaDB
 -- Wersja PHP: 8.2.0
 
@@ -20,6 +20,66 @@ SET time_zone = "+00:00";
 --
 -- Baza danych: `database`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `podzespoly`
+--
+
+CREATE TABLE `podzespoly` (
+  `id` int(255) NOT NULL,
+  `nazwa` varchar(50) NOT NULL,
+  `rodzaj` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+--
+-- Zrzut danych tabeli `podzespoly`
+--
+
+INSERT INTO `podzespoly` (`id`, `nazwa`, `rodzaj`) VALUES
+(1, 'RTX 2060', 'Karta graficzna'),
+(2, 'GTX 1660 Super', 'Karta graficzna'),
+(3, 'Intel Core i5-12400F', 'Procesor'),
+(4, 'AMD Ryzen 5 7600X', 'Procesor'),
+(5, 'Gigabyte X670 GAMING X AX', 'Płyta główna'),
+(6, 'Gigabyte Z690 GAMING X DDR4', 'Płyta główna'),
+(7, 'RTX 3090', 'Karta graficzna'),
+(8, 'AMD Ryzen 9 7950X3D', 'Procesor'),
+(9, 'Intel Core i7-13700K', 'Procesor'),
+(10, 'AMD Ryzen 9 7950X', 'Procesor'),
+(11, 'RTX 2090', 'Karta graficzna'),
+(12, 'RTX 3060', 'Karta graficzna'),
+(13, 'RX 6600', 'Karta graficzna'),
+(14, 'RTX 4070 Ti', 'Karta graficzna'),
+(15, '256 GB', 'Pamięć SSD'),
+(16, '512 GB', 'Pamięć SSD'),
+(17, '1 TB', 'Pamięć SSD'),
+(18, '2 TB', 'Pamięć HDD'),
+(19, 'Kingston FURY 16GB (2x8GB) 3600MHz', 'Pamięć RAM'),
+(20, 'Corsair 32GB (2x16GB) 3200MHz', 'Pamięć RAM'),
+(21, 'SilentiumPC Vero L3 500W', 'Zasilacz'),
+(22, 'Thermaltake Toughpower GF 650W', 'Zasilacz'),
+(23, 'ENDORFY Supremo FM5 750W', 'Zasilacz'),
+(24, 'GOODRAM 16GB (2x8GB) 3600MHz', 'Pamięć RAM'),
+(25, 'Gigabyte Z690 GAMING X DDR4', 'Płyta główna'),
+(26, 'ASUS ROG STRIX B550-F GAMING', 'Płyta główna'),
+(27, 'ASUS TUF GAMING B760-PLUS WIFI DDR4', 'Płyta główna'),
+(28, 'RTX 3060 Ti', 'Karta graficzna'),
+(30, 'RTX 3050', 'Karta graficzna'),
+(31, 'GTX 1650', 'Karta graficzna'),
+(32, 'RTX 4090', 'Karta graficzna'),
+(34, 'Corsair RM850e 850W', 'Zasilacz'),
+(35, 'Gigabyte UD1000GM PG5 PCIe 5.0 1000W', 'Zasilacz'),
+(36, 'Kingston FURY 16GB (2x8GB) 3200MHz', 'Pamięć RAM'),
+(37, 'ENDORFY Regnum 400 ARGB', 'Obudowa'),
+(38, 'be quiet! Pure Base 500 Black', 'Obudowa'),
+(39, 'ASUS TUF GAMING GT301', 'Obudowa'),
+(40, 'KRUX Leda', 'Obudowa'),
+(41, 'Genesis Irid 400 RGB', 'Obudowa'),
+(42, 'Kolink Observatory Lite RGB Black', 'Obudowa'),
+(43, 'be quiet! Silent Base 802 Czarna', 'Obudowa'),
+(44, 'G.SKILL 16 GB (2x8GB) 3200MHz', 'Pamięć RAM');
 
 -- --------------------------------------------------------
 
@@ -60,6 +120,12 @@ INSERT INTO `users` (`id`, `login`, `password`, `email`) VALUES
 --
 
 --
+-- Indeksy dla tabeli `podzespoly`
+--
+ALTER TABLE `podzespoly`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeksy dla tabeli `sesje`
 --
 ALTER TABLE `sesje`
@@ -74,6 +140,12 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT dla zrzuconych tabel
 --
+
+--
+-- AUTO_INCREMENT dla tabeli `podzespoly`
+--
+ALTER TABLE `podzespoly`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT dla tabeli `sesje`
