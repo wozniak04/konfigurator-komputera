@@ -17,7 +17,7 @@ app.use(cookieParser())
 app.use(express.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 const configuration=new Configuration({
-    apiKey:process.env.apiKey
+    apiKey:process.env.apikey
 })
 const openAI=new OpenAIApi(configuration)
 
