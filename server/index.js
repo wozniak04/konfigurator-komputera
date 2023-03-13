@@ -16,7 +16,7 @@ app.use(cookieParser())
 app.use(express.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 const configuration=new Configuration({
-    apiKey:'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'
+    apiKey:'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'
 })
 const openAI=new OpenAIApi(configuration)
 
