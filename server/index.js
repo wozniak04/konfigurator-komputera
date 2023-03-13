@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const bcrypt = require('bcrypt')
 const {Configuration,OpenAIApi}=require('openai')
+require('dotenv').config()
 
 app.use(cors({
     origin: 'http://localhost:5173',
@@ -16,7 +17,7 @@ app.use(cookieParser())
 app.use(express.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 const configuration=new Configuration({
-    apiKey:'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'
+    apiKey:process.env.apiKey
 })
 const openAI=new OpenAIApi(configuration)
 
