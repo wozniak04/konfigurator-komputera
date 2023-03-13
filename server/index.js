@@ -16,7 +16,7 @@ app.use(cookieParser())
 app.use(express.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 const configuration=new Configuration({
-    apiKey:'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'
+    apiKey:'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'
 })
 const openAI=new OpenAIApi(configuration)
 
@@ -27,7 +27,6 @@ const zapytanieAi=async (pyt)=>{
         max_tokens:1000,
         temperature:1
     })
-    console.log(res.data.choices[0].text)
     return res.data.choices[0].text
 }
 
@@ -106,7 +105,7 @@ app.get('/sessionCheck', (req, res) => {
 })
 
 app.post('/getUsers', async (req, res) => {
-    conn.query(`SELECT login,password,email FROM users WHERE login='${req.body.login}';`, (err, result) => {
+    conn.query('SELECT login,password,email FROM users WHERE login=?;',[req.body.login], (err, result) => {
         if (err) {
             console.log(err)
         } else {

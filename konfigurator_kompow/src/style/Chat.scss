@@ -47,14 +47,17 @@
     }
 
     .answer {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 12px;
         min-height: 100px;
+        max-height: 120px;
         width: 100%;
         padding: 15px;
         margin: 5px 0 22px 0;
         border: none;
         background: #f1f1f1;
         resize: none;
-        overflow-y:scroll;
+        overflow:auto;
     }
 
     /* When the textarea gets focus, do something */

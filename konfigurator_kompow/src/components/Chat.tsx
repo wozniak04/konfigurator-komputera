@@ -39,7 +39,6 @@ const Chat = () => {
         })
         .then((res)=>{
             setodp(res.data)
-            console.log(res.data)
         })
     }
 
