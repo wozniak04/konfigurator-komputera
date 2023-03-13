@@ -12,7 +12,7 @@ const KompPol = (props:IKonPolProps)=>{
 export default KompPol;
 
 const KompPolLayout = (props:IKonPolProps)=>(
-    <div className='polecane'>
+    <div className='komponentyPol'>
         <img src={props.src} className='zdj'/>
         <p className='opis'>{props.opis}</p>
     </div>
