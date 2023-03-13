@@ -34,6 +34,7 @@ const Chat = () => {
     }
 
     const wysliZapytanie=()=>{
+        setodp('...')
         axios.post('http://localhost:5000/ZapytanieAi',{
             zapytanie:pytanie
         })
