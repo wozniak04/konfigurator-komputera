@@ -4,8 +4,25 @@ import Komponenty from "./Komponenty";
 import Menus from "./Menus";
 import Konfigurator from "./KonfigProps";
 import KompPol from "./KomponentyPol";
-import '../style/Footer.scss'
+import React from "react";
+interface IoKonfigProps{
+
+}
+
 const Konfigur=()=>{
+    const [procesor,setprocesor]=React.useState('')
+    const [plyta,setplyta]=React.useState('')
+    const [karta,setkarta]=React.useState('')
+    const [ram,setram]=React.useState('')
+    const [ssd,setssd]=React.useState('')
+    const [hdd,sethdd]=React.useState('')
+    const [zasilacz,setzasilacz]=React.useState('')
+    const [obudowa,setobudowa]=React.useState('')
+
+    const zapiszkonfiguracje=()=>{
+
+    }
+
     return <KonfigLayout />
 }
 const KonfigLayout=()=>{
@@ -51,6 +68,7 @@ const KonfigLayout=()=>{
                         <Konfigurator src="" opis=""/>
                     </div>
                 </div>
+                <button className="zapisz">zapisz</button>
                 <div className="polecane">
                     <h3>Polecane komponenty do komputerów:</h3>
                     <div>
@@ -76,54 +94,3 @@ const KonfigLayout=()=>{
 }
 
 export default Konfigur;
-/** Strona się zawieszała przy uruchomieniu konfiguratora, teraz próbuję naprawienia błędów.
- * {props.opis}
- * 
-                            <Konfig src="" opis="" />
-                            <Konfig src="" opis="" />
-                            <Konfig src="" opis="" />
-                            <Konfig src="" opis="" />
-                            <Konfig src="" opis="" />
-                            <Konfig src="" opis="" />
-
-                            S
-                            <div className="polecane">
-                    <h3>Polecane komponenty do komputerów:</h3>
-                    <div className="komponentyPol">
-                        <img src={props.src} className="zdj"/>
-                        <p className="opis">Lorem ipsum</p>
-                        <button id="btnDodaj">Dodaj</button>
-                    </div>
-                    <div className="komponentyPol">
-                        <img src={props.src} className="zdj"/>
-                        <p className="opis">Lorem ipsum</p>
-                        <button id="btnDodaj2">Dodaj</button>
-                    </div>
-                    <div className="komponentyPol">
-                        <img src={props.src} className="zdj"/>
-                        <p className="opis">Lorem ipsum</p>
-                        <button id="btnDodaj3">Dodaj</button>
-                    </div>
-                </div>
-
-
-                
-                <div className="polecane">
-                    <h3>Polecane komponenty do komputerów:</h3>
-                    <div className="komponentyPol">
-                        <img src={props.src} className="zdj"/>
-                        <p className="opis">Lorem ipsum</p>
-                        <button id="btnDodaj">Dodaj</button>
-                    </div>
-                    <div className="komponentyPol">
-                        <img src={props.src} className="zdj"/>
-                        <p className="opis">Lorem ipsum</p>
-                        <button id="btnDodaj2">Dodaj</button>
-                    </div>
-                    <div className="komponentyPol">
-                        <img src={props.src} className="zdj"/>
-                        <p className="opis">Lorem ipsum</p>
-                        <button id="btnDodaj3">Dodaj</button>
-                    </div>
-                </div>
-*/

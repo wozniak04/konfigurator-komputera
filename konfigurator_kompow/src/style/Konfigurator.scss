@@ -1,14 +1,16 @@
-.konf{
+.konf {
     background-color: azure;
 }
-.konf_wlasc{
+
+.konf_wlasc {
     margin: auto;
     width: 45%;
     padding-top: 20px;
 }
-.komponent{
+
+.komponent {
     border: 2px solid #1c5550;
-    position:relative;
+    position: relative;
     background-color: rgba(203, 203, 203, 0.293);
     height: 27vh;
     width: 31vw;
@@ -18,21 +20,24 @@
     padding: 0;
 }
 
-.zdj{
+.zdj {
     max-width: 200px;
     max-height: 150px;
 }
-.search{
+
+.search {
     width: 70%;
     margin: auto
 }
-.polecane{
+
+.polecane {
     position: absolute;
     right: 55px;
     top: 100px;
     margin: auto;
 }
-.komponentyPol{
+
+.komponentyPol {
     border: 2px solid #1c5550;
     height: 86px;
     width: 22.7vw;
@@ -40,12 +45,13 @@
     clear: both;
     display: table;
 }
-#btnDodaj{
+
+#btnDodaj {
     right: 8px;
     bottom: 8px;
 }
 
-.stopka{
+.stopka {
     font-size: 13px;
     background-color: rgb(197, 206, 206);
     text-align: center;
@@ -54,12 +60,29 @@
     opacity: 80%;
     bottom: 0;
 }
-.opis{
+
+.opis {
     float: left;
     margin-left: 1vw;
     font-size: 1rem;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-select{
+
+select {
     width: 60%;
+}
+
+.zapisz {
+
+    background-color: #6380b3;
+    color: white;
+    border: none;
+    cursor: pointer;
+  
+    position: relative;
+    bottom: 17vh;
+   
+   width: 10vw;
+   height: 10vh;
+   float: left;
 }
