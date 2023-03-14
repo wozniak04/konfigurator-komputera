@@ -52,7 +52,6 @@ const Chat = () => {
                     <textarea placeholder="Type message.." value={pytanie} onChange={(e)=>pyt(e.target.value)} name="msg" required></textarea>
                     <div className="answer">{odp}</div>
                     <button type="submit" className="btn" onClick={wysliZapytanie}>Send</button>
-                    <button type="button" className="btn cancel" onClick={() => closeForm()}>Close</button>
                 </div>
             </div>
         </>

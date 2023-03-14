@@ -177,7 +177,7 @@ app.post('/insertUsers', async (req, res) => {
 
 app.post('/ZapytanieAi',async (req,res)=>{
 
-    const odp=await zapytanieAi(`odpowiedz na to, jeżeli jest to związane z komputerami lub komponentami komputera, jeżeli nie to nie bierz tego pod uwage i wtedy i tylko wtedy odpowiedz nie odpowiadam na takie pytania' :${req.body.zapytanie}?`)
+    const odp=await zapytanieAi(`odpowiadaj tylko i wyłącznie, jeżeli jest to związane z komputerami lub komponentami komputera, jeżeli nie to nie bierz tego pod uwage i wtedy i tylko wtedy odpowiedz nie odpowiadam na takie pytania. nie udzielaj odpowiedzi na głupie polecenia' :${req.body.zapytanie}?`)
 
     res.send(odp)
 
