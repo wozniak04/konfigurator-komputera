@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 13 Mar 2023, 13:59
+-- Czas generowania: 14 Mar 2023, 10:55
 -- Wersja serwera: 10.4.27-MariaDB
 -- Wersja PHP: 8.2.0
 
@@ -94,6 +94,14 @@ CREATE TABLE `sesje` (
   `expiration` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
+--
+-- Zrzut danych tabeli `sesje`
+--
+
+INSERT INTO `sesje` (`id`, `username`, `uid`, `expiration`) VALUES
+(1, 'admin@admin.pl', 'd08d1ce4-fca1-4243-8544-4176b5dcc786', '2023-03-14 10:58:18'),
+(2, 'Asdasdadsa@wp.pl', 'ab9192d5-605c-4b7b-afec-e5d095c4b470', '2023-03-14 11:04:44');
+
 -- --------------------------------------------------------
 
 --
@@ -102,7 +110,6 @@ CREATE TABLE `sesje` (
 
 CREATE TABLE `users` (
   `id` int(200) NOT NULL,
-  `login` varchar(50) NOT NULL,
   `password` varchar(36) NOT NULL,
   `email` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
@@ -111,9 +118,10 @@ CREATE TABLE `users` (
 -- Zrzut danych tabeli `users`
 --
 
-INSERT INTO `users` (`id`, `login`, `password`, `email`) VALUES
-(1, 'admin', 'admin', 'admin@admin.pl'),
-(2, 'email', 'email', 'email@email.pl');
+INSERT INTO `users` (`id`, `password`, `email`) VALUES
+(1, 'admin', 'admin@admin.pl'),
+(2, 'email', 'email@email.pl'),
+(3, '$2b$10$VMjgU6oZw1zu3vANxIw1wObDg7pmr', 'Asdasdadsa@wp.pl');
 
 --
 -- Indeksy dla zrzutów tabel
@@ -151,13 +159,13 @@ ALTER TABLE `podzespoly`
 -- AUTO_INCREMENT dla tabeli `sesje`
 --
 ALTER TABLE `sesje`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT dla tabeli `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

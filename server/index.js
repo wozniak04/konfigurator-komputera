@@ -106,7 +106,7 @@ app.get('/sessionCheck', (req, res) => {
 })
 
 app.post('/getUsers', async (req, res) => {
-    conn.query('SELECT login,password,email FROM users WHERE login=?;',[req.body.login], (err, result) => {
+    conn.query('SELECT password,email FROM users WHERE email=?;',[req.body.email], (err, result) => {
         if (err) {
             console.log(err)
         } else {
@@ -115,7 +115,7 @@ app.post('/getUsers', async (req, res) => {
                 if (bcrypt.compare(req.body.password, result[0].password)) {
 
                     let user = uuid.v4()
-                    insertsesja(req.body.login, user)
+                    insertsesja(req.body.email, user)
                     res.send({
                         log: true,
                         idSession: user
@@ -139,8 +139,8 @@ app.post('/getUsers', async (req, res) => {
 
 })
 
-app.post('/getLogin', (req, res) => {
-    conn.query(`SELECT login FROM users WHERE login='${req.body.login}' ;`, (err, result) => {
+app.post('/getEmail', (req, res) => {
+    conn.query(`SELECT email FROM users WHERE email='${req.body.login}' ;`, (err, result) => {
         if (err) {
             console.log(err)
         } else {
@@ -157,7 +157,8 @@ app.post('/getLogin', (req, res) => {
 app.post('/insertUsers', async (req, res) => {
 
     const hashpassword = await bcrypt.hash(req.body.password, 10)
-    conn.query(`INSERT INTO users (login,password,email) VALUE ('${req.body.login}','${hashpassword}','${req.body.email}')`, (err, result) => {
+    
+    conn.query(`INSERT INTO users (password,email) VALUE ('${hashpassword}','${req.body.email}')`, (err, result) => {
         if (err) {
             console.log(err)
             res.send({
@@ -165,7 +166,7 @@ app.post('/insertUsers', async (req, res) => {
             })
         } else {
             let user = uuid.v4()
-            insertsesja(req.body.login, user)
+            insertsesja(req.body.email, user)
             res.send({
                 log: true,
                 idSession: user

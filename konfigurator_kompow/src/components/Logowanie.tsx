@@ -5,7 +5,7 @@ import "../style/Logowanie.scss";
 import Cookies from "universal-cookie";
 
 const Logowanie = () => {
-  const [login, setlogin] = useState("");
+  const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
   const [blad, setblad] = useState(true);
   const navigate = useNavigate();
@@ -16,13 +16,13 @@ const Logowanie = () => {
   const log = () => {
     axios
       .post("http://localhost:5000/getUsers", {
-        login: login,
+        email: email,
         password: password,
       })
       .then((res) => {
         if (res.data.log) {
           cookies.set("idSession", res.data.idSession);
-          cookies.set("user", login);
+          cookies.set("user", email);
           navigate("/");
         } else {
           setblad(false);
@@ -32,8 +32,8 @@ const Logowanie = () => {
         console.log(err);
       });
   };
-  const handleloginchange = (value: string) => {
-    setlogin(value);
+  const handleemailchange = (value: string) => {
+    setemail(value);
   };
   const handlepasswordchange = (value: string) => {
     setpassword(value);
@@ -41,9 +41,9 @@ const Logowanie = () => {
 
   const temp: ILogowanieLayoutProps = {
     loginto: log,
-    login,
+    email,
     password,
-    handleloginchange: handleloginchange,
+    handleemailchange: handleemailchange,
     handlepasswordchange: handlepasswordchange,
     blad,
   };
@@ -52,9 +52,9 @@ const Logowanie = () => {
 };
 interface ILogowanieLayoutProps {
   loginto: () => void;
-  login: string;
+  email: string;
   password: string;
-  handleloginchange: (value: string) => void;
+  handleemailchange: (value: string) => void;
   handlepasswordchange: (value: string) => void;
   blad: boolean;
 }
@@ -66,9 +66,9 @@ const LogowanieLayout = (props: ILogowanieLayoutProps) => (
       <input
         type="text"
         maxLength={50}
-        placeholder="Nazwa użytkownika"
-        value={props.login}
-        onChange={(event) => props.handleloginchange(event.target.value)}
+        placeholder="email"
+        value={props.email}
+        onChange={(event) => props.handleemailchange(event.target.value)}
       />
       <i className="fa fa-user"></i>
       <input

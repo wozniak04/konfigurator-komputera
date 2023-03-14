@@ -9,14 +9,12 @@ import { useState } from 'react';
 const Rejestracja = () => {
     const navigate = useNavigate()
     const cookies = new Cookies();
-    const [login, setlogin] = useState('')
     const [email, setemail] = useState('')
     const [password1, setpassword1] = useState('')
     const [password2, setpassword2] = useState('')
     const [bladEmail, setbladEmail] = useState(true)
     const [bladhaslopowtorz, setbladhaslopowtorz] = useState(true)
     const [bladhasla, setbladhasla] = useState(true)
-    const [bladlogin, setbladlogin] = useState(true)
     let pusc: boolean = false
 
 
@@ -24,10 +22,9 @@ const Rejestracja = () => {
     const rejestruj = () => {
 
 
-        if (bladhasla === true && bladEmail === true && bladhaslopowtorz === true && bladlogin === true && pusc === true) {
+        if (bladhasla === true && bladEmail === true && bladhaslopowtorz === true && pusc === true) {
 
             axios.post('http://localhost:5000/insertUsers', {
-                login: login,
                 password: password1,
                 email: email
 
@@ -35,7 +32,7 @@ const Rejestracja = () => {
                 .then((res) => {
                     if (res.data.log) {
                         cookies.set('idSession', res.data.idSession)
-                        cookies.set("user",login)
+                        cookies.set("user",email)
                         navigate('/')
                     }
                     else {
@@ -50,9 +47,7 @@ const Rejestracja = () => {
 
     }
 
-    const handleLogin = (val: string) => {
-        setlogin(val)
-    }
+    
     const handleEmail = (val: string) => {
         setemail(val)
     }
@@ -65,7 +60,17 @@ const Rejestracja = () => {
     const walidacja = (x: number) => {
         switch (x) {
             case 1: {
-                if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) { setbladEmail(true); pusc = true }
+                if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) { 
+
+                    axios.post('http://localhost:5000/getEmail', {
+                    login: email
+                })
+                    .then((res) => { 
+                        if(res.data) {setbladEmail(true); pusc=true}
+                        else setbladEmail(false)
+                    })
+                    setbladEmail(true); pusc = true 
+                }
                 else setbladEmail(false)
             } break
             case 2: {
@@ -77,22 +82,12 @@ const Rejestracja = () => {
                 else setbladhaslopowtorz(false)
 
             } break
-            case 4: {
-                axios.post('http://localhost:5000/getLogin', {
-                    login: login
-                })
-                    .then((res) => { 
-                        if(res.data) {setbladlogin(true); pusc=true}
-                        else setbladlogin(false)
-                    })
-            }
+           
         }
 
     }
     const temp: IRejestracjaProps = {
         rejestruj,
-        login,
-        handleLogin,
         email,
         handleEmail,
         password1,
@@ -103,7 +98,6 @@ const Rejestracja = () => {
         bladHP: bladhaslopowtorz,
         bladH: bladhasla,
         wal: walidacja,
-        bladL:bladlogin
     }
 
     return <RejestracjaLayout {...temp} />
@@ -112,8 +106,6 @@ export default Rejestracja;
 
 interface IRejestracjaProps {
     rejestruj: () => void,
-    login: string,
-    handleLogin: (val: string) => void,
     email: string,
     handleEmail: (val: string) => void,
     password1: string,
@@ -124,7 +116,6 @@ interface IRejestracjaProps {
     bladHP: boolean,
     bladH: boolean,
     wal: (x: number) => void,
-    bladL:boolean
 
 
 }
@@ -135,9 +126,6 @@ const RejestracjaLayout = (props: IRejestracjaProps) => (
             <p className="title">Rejestracja</p>
             <input type="email" placeholder="Email" maxLength={50} value={props.email} onBlur={() => props.wal(1)} onChange={(event) => props.handleEmail(event.target.value)} />
             <p hidden={props.bladE} className="error">Niepoprawny email</p>
-            <input type="text" placeholder="Nazwa użytkownika" maxLength={50} value={props.login} onBlur={() => props.wal(4)} onChange={(e) => { props.handleLogin(e.target.value) }} />
-            <p hidden={props.bladL} className="error">Taka nazwa użytkownika jest już użyta</p>
-            <i className="fa fa-user"></i>
             <input type="password" placeholder="Hasło" value={props.password1} onBlur={() => props.wal(2)} onChange={(event) => props.handlePassword1(event?.target.value)} />
             <p hidden={props.bladH} className="error">Hasło powinno zawierać 8 liter, co najmniej 1 dużą, 1 małą i 1 liczbę</p>
             <input type="password" placeholder="Powtórz hasło" value={props.password2} onBlur={() => props.wal(3)} onChange={(event) => props.handlePassword2(event.target.value)} />
