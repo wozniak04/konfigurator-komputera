@@ -5,6 +5,7 @@ import Menus from "./Menus";
 import Konfigurator from "./KonfigProps";
 import KompPol from "./KomponentyPol";
 import React from "react";
+import Footer from "./Footer";
 interface IoKonfigProps{
 
 }
@@ -81,14 +82,8 @@ const KonfigLayout=()=>{
                         <KompPol src="" opis=""/>
                     </div>
                 </div>
-                <div className="stopka">
-                    &#169; 2023 Jakub Błażk, Mikołaj Woźniak, Michał Ruc
-                    <h4>Kontakt:</h4>E-mail: kontakt@strona.com<br></br>
-                    Telefon: 123-456-789
-                    <h4><a href="">Warunki</a></h4>
-                    <h4><a href="">Pomoc</a></h4>
-                </div>
             </div>
+            <Footer/>
         </>
     )
 }
