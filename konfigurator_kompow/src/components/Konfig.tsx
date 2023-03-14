@@ -6,19 +6,116 @@ import Konfigurator from "./KonfigProps";
 import KompPol from "./KomponentyPol";
 import React from "react";
 import Footer from "./Footer";
-interface IoKonfigProps{
+import axios from "axios";
 
+
+interface Iorodzaj{
+    nazwa:string;
+    rodzaj:string
+}
+interface IoKonfigProps{
+    procesor:string[];
+    plyta:string[];
+    karta:string[];
+    ram:string[];
+    ssd:string[];
+    hdd:string[];
+    zasilacz:string[];
+    obudowa:string[]
 }
 
 const Konfigur=()=>{
-    const [procesor,setprocesor]=React.useState('')
-    const [plyta,setplyta]=React.useState('')
-    const [karta,setkarta]=React.useState('')
-    const [ram,setram]=React.useState('')
-    const [ssd,setssd]=React.useState('')
-    const [hdd,sethdd]=React.useState('')
-    const [zasilacz,setzasilacz]=React.useState('')
-    const [obudowa,setobudowa]=React.useState('')
+    const [procesor,setprocesor]=React.useState<string[]>([])
+    const addtoProcesor=async(x:string)=>{
+        const arr=[...procesor,x]
+        await setprocesor(arr)
+    }
+    const [plyta,setplyta]=React.useState<string[]>([])
+    const addtoPlyta=async(x:string)=>{
+        const arr=[...plyta,x]
+        await setplyta(arr)
+    }
+    const [karta,setkarta]=React.useState<string[]>([])
+    const addtokarta=async(x:string)=>{
+        const arr=[...karta,x]
+        await setkarta(arr)
+    }
+    const [ram,setram]=React.useState<string[]>([])
+    const addtoRam=async(x:string)=>{
+        const arr=[...ram,x]
+        await setram(arr)
+    }
+    const [ssd,setssd]=React.useState<string[]>([])
+    const addtossdr=async(x:string)=>{
+        const arr=[...ssd,x]
+        await setssd(arr)
+    }
+    const [hdd,sethdd]=React.useState<string[]>([])
+    const addtohdd=async(x:string)=>{
+        const arr=[...procesor,x]
+        await sethdd(arr)
+    }
+    const [zasilacz,setzasilacz]=React.useState<string[]>([])
+    const addtozasilacz=async(x:string)=>{
+        const arr=[...zasilacz,x]
+        await setzasilacz(arr)
+    }
+    const [obudowa,setobudowa]=React.useState<string[]>([])
+    const addtoObudowa=async(x:string)=>{
+        const arr=[...procesor,x]
+        await setobudowa(arr)
+    }
+
+    const dodaj=async (data:Iorodzaj)=>{
+            data.forEach(e => {
+                
+            
+        switch(e.rodzaj){
+            case 'Procesor':{
+                await addtoArr(e.nazwa)
+            } break
+
+            case 'Karta graficzna':{
+                 addtoArr(e.nazwa,setkarta,karta)
+             } break
+
+             case 'Obudowa':{
+                addtoArr(e.nazwa,setobudowa,obudowa)
+             } break
+
+             case 'Pamięć HDD':{
+                 addtoArr(e.nazwa,sethdd,hdd)
+             } break
+
+             case 'Pamięć SSD':{
+                 addtoArr(e.nazwa,setssd,ssd)
+             } break
+
+             case 'Płyta główna':{
+                 addtoArr(e.nazwa,setplyta,plyta)
+             } break
+
+             case 'Zasilacz':{
+                 addtoArr(e.nazwa,setzasilacz,zasilacz)
+             } break
+
+             case 'Pamięć RAM':{
+                 addtoArr(e.nazwa,setram,ram)
+             } break
+        }
+    })
+
+    }
+
+    
+
+    React.useEffect(()=>{
+        axios.get('http://localhost:5000/getPodzespoly').then((res)=>{
+            res.data.forEach((e:Iorodzaj)=>{
+                dodaj(res.data)
+            })
+        })
+    },[])
 
     const zapiszkonfiguracje=()=>{
 

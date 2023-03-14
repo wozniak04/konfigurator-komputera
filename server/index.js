@@ -157,7 +157,7 @@ app.post('/getEmail', (req, res) => {
 app.post('/insertUsers', async (req, res) => {
 
     const hashpassword = await bcrypt.hash(req.body.password, 10)
-    
+
     conn.query(`INSERT INTO users (password,email) VALUE ('${hashpassword}','${req.body.email}')`, (err, result) => {
         if (err) {
             console.log(err)
@@ -172,6 +172,17 @@ app.post('/insertUsers', async (req, res) => {
                 idSession: user
             })
 
+        }
+    })
+})
+
+app.get('/getPodzespoly',async (req,res)=>{
+    conn.query('SELECT nazwa, rodzaj FROM podzespoly',(err,result)=>{
+        if(err)
+            console.log(err)
+        else{
+            console.log(result)
+            res.send(result)
         }
     })
 })
