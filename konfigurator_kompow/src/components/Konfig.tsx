@@ -4,14 +4,13 @@ import Komponenty from "./Komponenty";
 import Menus from "./Menus";
 import Konfigurator from "./KonfigProps";
 import KompPol from "./KomponentyPol";
-import React from "react";
 import Footer from "./Footer";
 import axios from "axios";
-
+import React,{useState} from "react"
 
 interface Iorodzaj{
     nazwa:string;
-    rodzaj:string
+    rodzaj:string;
 }
 interface IoKonfigProps{
     procesor:string[];
@@ -24,106 +23,113 @@ interface IoKonfigProps{
     obudowa:string[]
 }
 
-const Konfigur=()=>{
+ const Konfigur=()=>{
     const [procesor,setprocesor]=React.useState<string[]>([])
     const addtoProcesor=async(x:string)=>{
-        const arr=[...procesor,x]
-        await setprocesor(arr)
+       setprocesor(prevprocesor=>[...prevprocesor,x])
     }
     const [plyta,setplyta]=React.useState<string[]>([])
     const addtoPlyta=async(x:string)=>{
-        const arr=[...plyta,x]
-        await setplyta(arr)
+        setplyta(prevPlyta=>[...prevPlyta,x])
     }
     const [karta,setkarta]=React.useState<string[]>([])
     const addtokarta=async(x:string)=>{
-        const arr=[...karta,x]
-        await setkarta(arr)
+        setkarta(prevKarta=>[...prevKarta,x])
     }
     const [ram,setram]=React.useState<string[]>([])
     const addtoRam=async(x:string)=>{
-        const arr=[...ram,x]
-        await setram(arr)
+       setram(prevRam=>[...prevRam,x])
     }
     const [ssd,setssd]=React.useState<string[]>([])
-    const addtossdr=async(x:string)=>{
-        const arr=[...ssd,x]
-        await setssd(arr)
+    const addtossd=async(x:string)=>{
+        setssd(prevsdd=>[...prevsdd,x])
     }
     const [hdd,sethdd]=React.useState<string[]>([])
     const addtohdd=async(x:string)=>{
-        const arr=[...procesor,x]
-        await sethdd(arr)
+       sethdd(prevhdd=>[...prevhdd,x])
     }
     const [zasilacz,setzasilacz]=React.useState<string[]>([])
     const addtozasilacz=async(x:string)=>{
-        const arr=[...zasilacz,x]
-        await setzasilacz(arr)
+        setzasilacz(prevzasilacz=>[...prevzasilacz,x])
     }
     const [obudowa,setobudowa]=React.useState<string[]>([])
     const addtoObudowa=async(x:string)=>{
-        const arr=[...procesor,x]
-        await setobudowa(arr)
+     setobudowa(prevobudowa=>[...prevobudowa,x])
     }
+   
+    
 
-    const dodaj=async (data:Iorodzaj)=>{
-            data.forEach(e => {
-                
+    const dodaj=async (data:Iorodzaj[])=>{
+             data.forEach(async(e)=>{                
+                switch(e.rodzaj){
+                    case 'Procesor':{
+                        addtoProcesor(e.nazwa)
+                    } break
+        
+                    case 'Karta graficzna':{
+                        addtokarta(e.nazwa)
+                     } break
+        
+                     case 'Obudowa':{
+                        addtoObudowa(e.nazwa)
+                     } break
+        
+                     case 'Pamięć HDD':{
+                         addtohdd(e.nazwa)
+                     } break
+        
+                     case 'Pamięć SSD':{
+                         addtossd(e.nazwa)
+                     } break
+        
+                     case 'Płyta główna':{
+                         addtoPlyta(e.nazwa)
+                     } break
+        
+                     case 'Zasilacz':{
+                         addtozasilacz(e.nazwa)
+                     } break
+        
+                     case 'Pamięć RAM':{
+                         addtoRam(e.nazwa)
+                     } break
+                }
+            })
             
-        switch(e.rodzaj){
-            case 'Procesor':{
-                await addtoArr(e.nazwa)
-            } break
 
-            case 'Karta graficzna':{
-                 addtoArr(e.nazwa,setkarta,karta)
-             } break
-
-             case 'Obudowa':{
-                addtoArr(e.nazwa,setobudowa,obudowa)
-             } break
-
-             case 'Pamięć HDD':{
-                 addtoArr(e.nazwa,sethdd,hdd)
-             } break
-
-             case 'Pamięć SSD':{
-                 addtoArr(e.nazwa,setssd,ssd)
-             } break
-
-             case 'Płyta główna':{
-                 addtoArr(e.nazwa,setplyta,plyta)
-             } break
-
-             case 'Zasilacz':{
-                 addtoArr(e.nazwa,setzasilacz,zasilacz)
-             } break
-
-             case 'Pamięć RAM':{
-                 addtoArr(e.nazwa,setram,ram)
-             } break
-        }
-    })
-
-    }
+            
+        };
+    
 
     
 
     React.useEffect(()=>{
         axios.get('http://localhost:5000/getPodzespoly').then((res)=>{
-            res.data.forEach((e:Iorodzaj)=>{
-                dodaj(res.data)
-            })
+            dodaj(res.data)
         })
     },[])
+
+
 
     const zapiszkonfiguracje=()=>{
 
     }
 
-    return <KonfigLayout />
+    const temp:IoKonfigProps={
+        procesor:procesor,
+        plyta:plyta,
+        karta:karta,
+        ram:ram,
+        ssd:ssd,
+        hdd:hdd,
+        zasilacz:zasilacz,
+        obudowa:obudowa
+
+    }
+
+    return <KonfigLayout {...temp}/>
 }
-const KonfigLayout=()=>{
+const KonfigLayout=(props:IoKonfigProps)=>{
     return(
         <>
         <Menus/>
@@ -135,35 +141,35 @@ const KonfigLayout=()=>{
                     </div>
                     <div className="komponent" id="procesor">
                         <h3>Procesor</h3>
-                        <Konfigurator src="" opis=""/>
+                        <Konfigurator src="" opis="procesor" dane={props.procesor}/>
                     </div>
                     <div className="komponent" id="plyta-glowna">
                         <h3>Płyta Główna</h3>
-                        <Konfigurator src="" opis=""/>
+                        <Konfigurator src="" opis="plyta-glowna" dane={props.plyta}/>
                     </div>
                     <div className="komponent" id="karta-graficzna">
                         <h3>Karta graficzna</h3>
-                        <Konfigurator src="" opis=""/>
+                        <Konfigurator src="" opis="karta-graficzna" dane={props.karta}/>
                     </div>
                     <div className="komponent" id="ram">
                         <h3>Pamięć RAM</h3>
-                        <Konfigurator src="" opis=""/>
+                        <Konfigurator src="" opis="ram" dane={props.ram}/>
                     </div>
                     <div className="komponent" id="hdd">
                         <h3>Pamięć HDD</h3>   
-                        <Konfigurator src="" opis=""/>
+                        <Konfigurator src="" opis="dysk hdd" dane={props.hdd}/>
                     </div>
                     <div className="komponent" id="ssd">
                         <h3>Pamięć SSD</h3>
-                        <Konfigurator src="" opis=""/>
+                        <Konfigurator src="" opis="dysk ssd" dane={props.ssd}/>
                     </div>
                     <div className="komponent" id="zasilacz">
                         <h3>Zasilacz</h3>
-                        <Konfigurator src="" opis=""/>
+                        <Konfigurator src="" opis="zasilacz" dane={props.zasilacz}/>
                     </div>
                     <div className="komponent" id="obudowa">
                         <h3>Obudowa</h3>
-                        <Konfigurator src="" opis=""/>
+                        <Konfigurator src="" opis="Obudowe" dane={props.obudowa}/>
                     </div>
                 </div>
                 <button className="zapisz">zapisz</button>
@@ -186,3 +192,7 @@ const KonfigLayout=()=>{
 }
 
 export default Konfigur;
+
+
+
+

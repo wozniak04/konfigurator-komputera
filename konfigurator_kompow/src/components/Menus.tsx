@@ -28,10 +28,6 @@ const Menus = () => {
 
 export default Menus;
 
-interface IOMenuProps {
-  nazwa: string;
-}
-
 const MenuLayout = () => (
   <Box sx={{ flexGrow: 1 }}>
     <AppBar position="static">
