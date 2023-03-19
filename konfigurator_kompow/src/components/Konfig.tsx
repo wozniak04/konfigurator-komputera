@@ -20,10 +20,16 @@ interface IoKonfigProps{
     ssd:string[];
     hdd:string[];
     zasilacz:string[];
-    obudowa:string[]
+    obudowa:string[],
+    wybrane:string[],
+    ustawwybrane:(x:string)=>void
 }
 
  const Konfigur=()=>{
+    const [wybrane,setwybrane]=React.useState<string[]>([])
+    const addtowybrane=async(x:string)=>{
+        setwybrane(prevwybrane=>[...prevwybrane,x])
+    }
     const [procesor,setprocesor]=React.useState<string[]>([])
     const addtoProcesor=async(x:string)=>{
        setprocesor(prevprocesor=>[...prevprocesor,x])
@@ -104,10 +110,28 @@ interface IoKonfigProps{
     
 
     React.useEffect(()=>{
-        axios.get('http://localhost:5000/getPodzespoly').then((res)=>{
+        axios.get('http://localhost:5000/getPodzespoly')
+        .then((res)=>{
             dodaj(res.data)
         })
     },[])
+
+    React.useEffect(()=>{
+
+        axios.post('http://localhost:5000/Proponowane',{
+            PROCESOR:[...procesor],
+            PLYTA:[...plyta],
+            KARTA:[...karta],
+            RAM:[...ram],
+            HDD:[...hdd],
+            SSD:[...ssd],
+            ZASILACZ:[...zasilacz],
+            OBUDOWA:[...obudowa]
+        })
+        .then((res)=>{
+            console.log(res)
+        })     
+    },[wybrane])
 
 
 
@@ -123,7 +147,9 @@ interface IoKonfigProps{
         ssd:ssd,
         hdd:hdd,
         zasilacz:zasilacz,
-        obudowa:obudowa
+        obudowa:obudowa,
+        wybrane:wybrane,
+        ustawwybrane:addtowybrane
 
     }
 
@@ -174,15 +200,9 @@ const KonfigLayout=(props:IoKonfigProps)=>{
                 </div>
                 <button className="zapisz">zapisz</button>
                 <div className="polecane">
-                    <h3>Polecane komponenty do komputerów:</h3>
+                    <h3>Polecane komponenty do komputerów:</h3>                   
                     <div>
-                        <KompPol src="" opis=""/>
-                    </div>
-                    <div>
-                        <KompPol src="" opis=""/>
-                    </div>
-                    <div>
-                        <KompPol src="" opis=""/>
+                        <KompPol />
                     </div>
                 </div>
             </div>

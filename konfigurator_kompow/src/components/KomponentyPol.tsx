@@ -1,19 +1,19 @@
 import '../style/Konfigurator.scss'
 
 interface IKonPolProps{
-    src:string;
-    opis:string;
+    
 }
 
-const KompPol = (props:IKonPolProps)=>{
-    return <KompPolLayout src={props.src} opis={props.opis}/>
+const KompPol = ()=>{
+    return <KompPolLayout/>
 }
 
 export default KompPol;
 
-const KompPolLayout = (props:IKonPolProps)=>(
+const KompPolLayout = ()=>(
     <div className='komponentyPol'>
-        <img src={props.src} className='zdj'/>
-        <p className='opis'>{props.opis}</p>
+        <ul>
+            <li>dupa</li>
+        </ul>
     </div>
 )

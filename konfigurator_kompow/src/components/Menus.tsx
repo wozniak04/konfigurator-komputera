@@ -15,7 +15,8 @@ const Menus = () => {
     axios
       .get("http://localhost:5000/sessionCheck", { withCredentials: true })
       .then((res) => {
-        if (!res.data) navigate("/Logowanie");
+        if (!res.data) 
+          navigate("/Logowanie");
       })
       .catch((err) => {
         console.log(err);

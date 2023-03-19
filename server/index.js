@@ -49,7 +49,7 @@ const deletesesja = async (user) => {
 
 const insertsesja = (user, uuid) => {
     const data = new Date()
-    data.setMinutes(data.getMinutes() + 10)
+    data.setMinutes(data.getMinutes()+20)
     let dzisdata = `${data.getFullYear()}-${data.getMonth() + 1}-${data.getDate()} ${data.getHours()}:${data.getMinutes()}:${data.getSeconds()}`
 
     deletesesja(user).then(() => {
@@ -60,44 +60,56 @@ const insertsesja = (user, uuid) => {
     })
 }
 
-const add10min = (user, uuid, dat) => {
-    const data = new Date(dat)
-    data.setMinutes(data.getMinutes() + 10)
-    let dzisdata = `${data.getFullYear()}-${data.getMonth() + 1}-${data.getDate()} ${data.getHours()}:${data.getMinutes()}:${data.getSeconds()}`
-    console.log(dzisdata)
+// const add10min = (user, uuid, dat) => {
+//     const data = new Date(dat)
+//     data.setMinutes(data.getMinutes() + 10)
+//     let dzisdata = `${data.getFullYear()}-${data.getMonth() + 1}-${data.getDate()} ${data.getHours()}:${data.getMinutes()}:${data.getSeconds()}`
 
-    conn.query(`UPDATE sesje SET expiration='${dzisdata}' WHERE username='${user}' AND uid='${uuid}'`, (err) => {
-        if (err)
-            console.log(err)
-    })
-}
+//     conn.query(`UPDATE sesje SET expiration='${dzisdata}' WHERE username='${user}' AND uid='${uuid}'`, (err) => {
+//         if (err)
+//             console.log(err)
+//     })
+// }
 
-const expiration = async (user, uuid) => {
-    conn.query(`SELECT expiration FROM sesje WHERE username='${user}' AND uid='${uuid}'`, (err, res) => {
-        if (err)
-            console.log(err)
-        if (res.length > 0) {
-            let datab = new Date(res[0].expiration)
-            let dataT = new Date()
+const expiration = (user, uuid) => {
+    return new Promise((resolve, reject) => {
+      conn.query(`SELECT expiration FROM sesje WHERE username='${user}' AND uid='${uuid}'`, (err, res) => {
+        if (err) {
+          console.log(err);
+          reject(false);
 
-
-            if (datab.getTime() > dataT.getTime()) {
-                return true
-            }
+        } 
+        else if (res.length > 0) {
+          let datab = new Date(res[0].expiration);
+          let dataT = new Date();
+          if (datab.getTime() > dataT.getTime()) {
+            //add10min(user, uuid, datab)
+            resolve(true);
+          } else {
+            resolve(false);
+          }
+        } else {
+          resolve(false);
         }
-        return false
+      });
+    });
+  };
 
-    })
-}
 
-
-app.get('/sessionCheck', (req, res) => {
+app.get('/sessionCheck',(req, res) => {
     if (req.cookies.user !== undefined && req.cookies.idSession !== undefined) {
-        let z = expiration(req.cookies.user, req.cookies.idSession).then(() => {
-            if (z) {
+        expiration(req.cookies.user, req.cookies.idSession)
+        .then((resp)=>{
+        
+            if (resp) {
                 res.send(true)
             }
+            else{
+                res.send(false)
+            }
         })
+        
+        
 
     } else {
         res.send(false)
@@ -192,6 +204,9 @@ app.post('/ZapytanieAi',async (req,res)=>{
 
     res.send(odp)
 
+})
+app.post('/Proponowane',async (req,res)=>{
+   res.send(req.body.PROCESOR)
 })
 
 
