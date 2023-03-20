@@ -17,18 +17,22 @@ interface IoKonfigProps{
     plyta:string[];
     karta:string[];
     ram:string[];
-    ssd:string[];
     hdd:string[];
+    ssd:string[];
     zasilacz:string[];
-    obudowa:string[],
-    wybrane:string[],
-    ustawwybrane:(x:string)=>void
+    obudowa:string[];
+    ustawwybrane:(x:string,index:number)=>void;
+    polecane:string
 }
 
+
  const Konfigur=()=>{
-    const [wybrane,setwybrane]=React.useState<string[]>([])
-    const addtowybrane=async(x:string)=>{
-        setwybrane(prevwybrane=>[...prevwybrane,x])
+    const [polecane,setpolecane]=React.useState('')
+    const [wybrane,setwybrane]=React.useState<string[]>(['','','','','','','',''])
+    const addtowybrane=async(x:string,index:number)=>{
+        const tab=[...wybrane]
+        tab[index]=x
+        setwybrane(tab)
     }
     const [procesor,setprocesor]=React.useState<string[]>([])
     const addtoProcesor=async(x:string)=>{
@@ -66,6 +70,14 @@ interface IoKonfigProps{
     
 
     const dodaj=async (data:Iorodzaj[])=>{
+            setprocesor([])
+            setplyta([])
+            setkarta([])
+            setram([])
+            sethdd([])
+            setssd([])
+            setzasilacz([])
+            setobudowa([])
              data.forEach(async(e)=>{                
                 switch(e.rodzaj){
                     case 'Procesor':{
@@ -117,8 +129,8 @@ interface IoKonfigProps{
     },[])
 
     React.useEffect(()=>{
-
         axios.post('http://localhost:5000/Proponowane',{
+            WYBRANE:[...wybrane],
             PROCESOR:[...procesor],
             PLYTA:[...plyta],
             KARTA:[...karta],
@@ -129,9 +141,10 @@ interface IoKonfigProps{
             OBUDOWA:[...obudowa]
         })
         .then((res)=>{
-            console.log(res)
+            setpolecane(res.data)
+            console.log(res.data)
         })     
-    },[wybrane])
+    },[JSON.stringify(wybrane)])
 
 
 
@@ -144,12 +157,12 @@ interface IoKonfigProps{
         plyta:plyta,
         karta:karta,
         ram:ram,
-        ssd:ssd,
         hdd:hdd,
+        ssd:ssd,
         zasilacz:zasilacz,
         obudowa:obudowa,
-        wybrane:wybrane,
-        ustawwybrane:addtowybrane
+        ustawwybrane:addtowybrane,
+        polecane:polecane
 
     }
 
@@ -167,42 +180,42 @@ const KonfigLayout=(props:IoKonfigProps)=>{
                     </div>
                     <div className="komponent" id="procesor">
                         <h3>Procesor</h3>
-                        <Konfigurator src="" opis="procesor" dane={props.procesor}/>
+                        <Konfigurator src="" opis="procesor" dane={props.procesor} wybrane={props.ustawwybrane} index={0}/>
                     </div>
                     <div className="komponent" id="plyta-glowna">
                         <h3>Płyta Główna</h3>
-                        <Konfigurator src="" opis="plyta-glowna" dane={props.plyta}/>
+                        <Konfigurator src="" opis="plyta-glowna" dane={props.plyta} wybrane={props.ustawwybrane} index={1}/>
                     </div>
                     <div className="komponent" id="karta-graficzna">
                         <h3>Karta graficzna</h3>
-                        <Konfigurator src="" opis="karta-graficzna" dane={props.karta}/>
+                        <Konfigurator src="" opis="karta-graficzna" dane={props.karta} wybrane={props.ustawwybrane} index={2}/>
                     </div>
                     <div className="komponent" id="ram">
                         <h3>Pamięć RAM</h3>
-                        <Konfigurator src="" opis="ram" dane={props.ram}/>
+                        <Konfigurator src="" opis="ram" dane={props.ram} wybrane={props.ustawwybrane} index={3}/>
                     </div>
                     <div className="komponent" id="hdd">
                         <h3>Pamięć HDD</h3>   
-                        <Konfigurator src="" opis="dysk hdd" dane={props.hdd}/>
+                        <Konfigurator src="" opis="dysk hdd" dane={props.hdd} wybrane={props.ustawwybrane} index={4}/>
                     </div>
                     <div className="komponent" id="ssd">
                         <h3>Pamięć SSD</h3>
-                        <Konfigurator src="" opis="dysk ssd" dane={props.ssd}/>
+                        <Konfigurator src="" opis="dysk ssd" dane={props.ssd} wybrane={props.ustawwybrane} index={5}/>
                     </div>
                     <div className="komponent" id="zasilacz">
                         <h3>Zasilacz</h3>
-                        <Konfigurator src="" opis="zasilacz" dane={props.zasilacz}/>
+                        <Konfigurator src="" opis="zasilacz" dane={props.zasilacz} wybrane={props.ustawwybrane} index={6}/>
                     </div>
                     <div className="komponent" id="obudowa">
                         <h3>Obudowa</h3>
-                        <Konfigurator src="" opis="Obudowe" dane={props.obudowa}/>
+                        <Konfigurator src="" opis="Obudowe" dane={props.obudowa} wybrane={props.ustawwybrane} index={7}/>
                     </div>
                 </div>
                 <button className="zapisz">zapisz</button>
                 <div className="polecane">
                     <h3>Polecane komponenty do komputerów:</h3>                   
                     <div>
-                        <KompPol />
+                        <KompPol polecane={props.polecane}/>
                     </div>
                 </div>
             </div>

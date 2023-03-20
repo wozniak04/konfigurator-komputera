@@ -1,19 +1,17 @@
 import '../style/Konfigurator.scss'
 
 interface IKonPolProps{
-    
+    polecane:string
 }
 
-const KompPol = ()=>{
-    return <KompPolLayout/>
+const KompPol = (props :IKonPolProps)=>{
+    return <KompPolLayout polecane={props.polecane}/>
 }
 
 export default KompPol;
 
-const KompPolLayout = ()=>(
+const KompPolLayout = (props:IKonPolProps)=>(
     <div className='komponentyPol'>
-        <ul>
-            <li>dupa</li>
-        </ul>
+       {props.polecane}
     </div>
 )
