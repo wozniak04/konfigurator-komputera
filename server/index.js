@@ -206,7 +206,7 @@ app.post('/ZapytanieAi', async (req, res) => {
 
 })
 app.post('/Proponowane', async (req, res) => {
-    const zapytanie = `Jakie Komponenty byś dobrał z tych co ci tu podałem (Procesorów:${req.body.PROCESOR}, Płyt głównych:${req.body.PLYTA}, Kart graficznych:${req.body.KARTA}, Pamięci Ram:${req.body.RAM}, Pamięci hdd:${req.body.HDD}, Pamięci SSD:${req.body.SSD}, Zasilacza:${req.body.ZASILACZ}, Obudowy:${req.body.OBUDOWA}) dla tych komponentów:${req.body.WYBRANE} odpowiedz następującym schematem komponent:nazwa modelu`
+    const zapytanie = `Jakie Komponenty byś dobrał z tych co ci tu podałem (Procesorów:${req.body.PROCESOR}, Płyt głównych:${req.body.PLYTA}, Kart graficznych:${req.body.KARTA}, Pamięci Ram:${req.body.RAM}, Pamięci hdd:${req.body.HDD}, Pamięci SSD:${req.body.SSD}, Zasilacza:${req.body.ZASILACZ}, Obudowy:${req.body.OBUDOWA}) aby było kompatybilne dla tych komponentów:${req.body.WYBRANE} jeżeli nie jest kompatybilne to odpowiedz że te komponenty nie są kompatybilne,a jeżeli jest odpowiedz następującym schematem komponent:nazwa modelu`
     let odp;
     if (req.body.WYBRANE.join('') !== '') {
         odp = await zapytanieAi(zapytanie)
