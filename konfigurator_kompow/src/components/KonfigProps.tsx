@@ -4,7 +4,6 @@ import { useState,useEffect } from 'react';
 import { Value } from 'sass';
 
 interface IKonfigProps {
-    src: string;
     opis: string;
     dane: string[];
     wybrane:(x:string,index:number) =>void;
@@ -28,7 +27,7 @@ const Konfigurator = (props: IKonfigProps) => {
         setvalue(e.target.value)
     }
 
-    return <KonfigLayout src={props.src} opis={props.opis} dane={props.dane} wybrane={props.wybrane} index={props.index} val={value} ustawval={handlechange}/>
+    return <KonfigLayout opis={props.opis} dane={props.dane} wybrane={props.wybrane} index={props.index} val={value} ustawval={handlechange} src={''}/>
 }
 
 export default Konfigurator;

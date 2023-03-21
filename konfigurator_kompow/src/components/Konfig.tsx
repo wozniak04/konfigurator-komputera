@@ -178,35 +178,35 @@ const KonfigLayout=(props:IoKonfigProps)=>{
                 <div className="konf_wlasc">
                     <div className="komponent" id="procesor">
                         <h3>Procesor</h3>
-                        <Konfigurator src="" opis="procesor" dane={props.procesor} wybrane={props.ustawwybrane} index={0}/>
+                        <Konfigurator opis="procesor" dane={props.procesor} wybrane={props.ustawwybrane} index={0}/>
                     </div>
                     <div className="komponent" id="plyta-glowna">
                         <h3>Płyta Główna</h3>
-                        <Konfigurator src="" opis="plyta-glowna" dane={props.plyta} wybrane={props.ustawwybrane} index={1}/>
+                        <Konfigurator opis="plyta-glowna" dane={props.plyta} wybrane={props.ustawwybrane} index={1}/>
                     </div>
                     <div className="komponent" id="karta-graficzna">
                         <h3>Karta graficzna</h3>
-                        <Konfigurator src="" opis="karta-graficzna" dane={props.karta} wybrane={props.ustawwybrane} index={2}/>
+                        <Konfigurator opis="karta-graficzna" dane={props.karta} wybrane={props.ustawwybrane} index={2}/>
                     </div>
                     <div className="komponent" id="ram">
                         <h3>Pamięć RAM</h3>
-                        <Konfigurator src="" opis="ram" dane={props.ram} wybrane={props.ustawwybrane} index={3}/>
+                        <Konfigurator opis="ram" dane={props.ram} wybrane={props.ustawwybrane} index={3}/>
                     </div>
                     <div className="komponent" id="hdd">
                         <h3>Pamięć HDD</h3>   
-                        <Konfigurator src="" opis="dysk hdd" dane={props.hdd} wybrane={props.ustawwybrane} index={4}/>
+                        <Konfigurator opis="dysk hdd" dane={props.hdd} wybrane={props.ustawwybrane} index={4}/>
                     </div>
                     <div className="komponent" id="ssd">
                         <h3>Pamięć SSD</h3>
-                        <Konfigurator src="" opis="dysk ssd" dane={props.ssd} wybrane={props.ustawwybrane} index={5}/>
+                        <Konfigurator opis="dysk ssd" dane={props.ssd} wybrane={props.ustawwybrane} index={5}/>
                     </div>
                     <div className="komponent" id="zasilacz">
                         <h3>Zasilacz</h3>
-                        <Konfigurator src="" opis="zasilacz" dane={props.zasilacz} wybrane={props.ustawwybrane} index={6}/>
+                        <Konfigurator opis="zasilacz" dane={props.zasilacz} wybrane={props.ustawwybrane} index={6}/>
                     </div>
                     <div className="komponent" id="obudowa">
                         <h3>Obudowa</h3>
-                        <Konfigurator src="" opis="Obudowe" dane={props.obudowa} wybrane={props.ustawwybrane} index={7}/>
+                        <Konfigurator opis="Obudowe" dane={props.obudowa} wybrane={props.ustawwybrane} index={7}/>
                     </div>
                 </div>
                 <button className="zapisz">zapisz</button>
