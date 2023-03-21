@@ -52,24 +52,14 @@ const insertsesja = (user, uuid) => {
     data.setMinutes(data.getMinutes() + 20)
     let dzisdata = `${data.getFullYear()}-${data.getMonth() + 1}-${data.getDate()} ${data.getHours()}:${data.getMinutes()}:${data.getSeconds()}`
 
-    deletesesja(user).then(() => {
+    deletesesja(user)
+    .then(() => {
         conn.query(`INSERT INTO sesje (username,uid,expiration) VALUE ('${user}','${uuid}','${dzisdata}')`, (err) => {
             if (err)
                 console.log(err)
         })
     })
 }
-
-// const add10min = (user, uuid, dat) => {
-//     const data = new Date(dat)
-//     data.setMinutes(data.getMinutes() + 10)
-//     let dzisdata = `${data.getFullYear()}-${data.getMonth() + 1}-${data.getDate()} ${data.getHours()}:${data.getMinutes()}:${data.getSeconds()}`
-
-//     conn.query(`UPDATE sesje SET expiration='${dzisdata}' WHERE username='${user}' AND uid='${uuid}'`, (err) => {
-//         if (err)
-//             console.log(err)
-//     })
-// }
 
 const expiration = (user, uuid) => {
     return new Promise((resolve, reject) => {
@@ -83,7 +73,6 @@ const expiration = (user, uuid) => {
                 let datab = new Date(res[0].expiration);
                 let dataT = new Date();
                 if (datab.getTime() > dataT.getTime()) {
-                    //add10min(user, uuid, datab)
                     resolve(true);
                 } else {
                     resolve(false);
