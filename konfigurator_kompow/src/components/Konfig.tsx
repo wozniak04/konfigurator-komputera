@@ -178,7 +178,7 @@ const KonfigLayout=(props:IoKonfigProps)=>{
                 <div className="konf_wlasc">
                     <div className="komponent" id="procesor">
                         <h3>Procesor</h3>
-                        <Konfigurator src="" opis="procesor" dane={props.procesor} wybrane={props.ustawwybrane} index={0}/>
+                        <Konfigurator src={`/public/komponenty_zdj/${props.ustawwybrane}.jpg`} opis="procesor" dane={props.procesor} wybrane={props.ustawwybrane} index={0}/>
                     </div>
                     <div className="komponent" id="plyta-glowna">
                         <h3>Płyta Główna</h3>
