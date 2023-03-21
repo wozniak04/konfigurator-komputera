@@ -5,6 +5,7 @@ interface IKonPolProps{
 }
 
 const KompPol = (props :IKonPolProps)=>{
+    console.log(props.polecane.split('\n'))
     return <KompPolLayout polecane={props.polecane}/>
 }
 
