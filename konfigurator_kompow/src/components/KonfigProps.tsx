@@ -10,7 +10,6 @@ interface IKonfigProps {
     index:number;
 }
 interface IOProps{
-    src: string;
     opis: string;
     dane: string[];
     wybrane:(x:string,index:number) =>void;
@@ -21,13 +20,13 @@ interface IOProps{
 
 const Konfigurator = (props: IKonfigProps) => {
 
-    const [value,setvalue]=useState('wybierz'+props.opis)
+    const [value,setvalue]=useState('')
     const handlechange=(e :React.ChangeEvent<HTMLSelectElement>) =>{
         props.wybrane(e.target.value,props.index)
         setvalue(e.target.value)
     }
 
-    return <KonfigLayout opis={props.opis} dane={props.dane} wybrane={props.wybrane} index={props.index} val={value} ustawval={handlechange} src={''}/>
+    return <KonfigLayout opis={props.opis} dane={props.dane} wybrane={props.wybrane} index={props.index} val={value} ustawval={handlechange}/>
 }
 
 export default Konfigurator;
@@ -37,7 +36,7 @@ const KonfigLayout = (props: IOProps) => {
 
     return (
         <div className='konf'>
-            <img src={`/komponenty_zdj/${props.val}.jpg`} className='zdj' />
+            <img src={props.val!=='' ? `/komponenty_zdj/${props.val}.jpg`: `/komponenty_zdj/${props.dane[0]}.jpg`} className='zdj' />
             <p className='opis'>{props.opis}</p>
             <select value={props.val} onChange={(e)=>props.ustawval(e)}>
                 

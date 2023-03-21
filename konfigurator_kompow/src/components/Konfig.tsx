@@ -25,8 +25,11 @@ interface IoKonfigProps{
     polecane:string
 }
 
-
- const Konfigur=()=>{
+interface Ikonfig{
+    tab:string[]
+}
+ const Konfigur=(props:Ikonfig)=>{
+    const [konfig,setkonfig]=React.useState<string[]>([])
     const [polecane,setpolecane]=React.useState('')
     const [wybrane,setwybrane]=React.useState<string[]>(['','','','','','','',''])
     const addtowybrane=async(x:string,index:number)=>{
@@ -143,7 +146,6 @@ interface IoKonfigProps{
         })
         .then((res)=>{
             setpolecane(res.data)
-            console.log(res.data)
         })     
     },[JSON.stringify(wybrane)])
 

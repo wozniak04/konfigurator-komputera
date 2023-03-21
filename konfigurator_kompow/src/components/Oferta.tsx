@@ -2,7 +2,7 @@ import '../style/Mids.scss';
 
 interface IOfertaProps {
     src: string,
-    opis: string
+    opis: string[]
 }
 
 const Oferta = (props: IOfertaProps) => {

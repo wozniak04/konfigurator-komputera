@@ -19,7 +19,7 @@ function App() {
         </>}>
         </Route>
         <Route path="/Konfig" element={<>
-        <Konfig/>
+        <Konfig tab={[]}/>
         <Chat />
         </>} />
         <Route path="/Logowanie" element={<Logowanie />} />
