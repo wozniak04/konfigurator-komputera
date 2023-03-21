@@ -175,9 +175,6 @@ const KonfigLayout=(props:IoKonfigProps)=>{
             <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
             <div className="konf">
                 <div className="konf_wlasc">
-                    <div className="search">
-                        <TextField id="outlined-basic" variant="outlined" fullWidth label="Szukaj"/>
-                    </div>
                     <div className="komponent" id="procesor">
                         <h3>Procesor</h3>
                         <Konfigurator src="" opis="procesor" dane={props.procesor} wybrane={props.ustawwybrane} index={0}/>
