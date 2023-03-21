@@ -14,6 +14,6 @@ export default Oferta;
 const OfertaLayout = (props: IOfertaProps) => (
     <div className="oferta">
         <img src={props.src} className="zdj" />
-        <p className="opis">{props.opis}</p>
+        <p className="opis">{props.opis.join(',')}</p>
     </div>
 )
