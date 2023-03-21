@@ -1,18 +1,26 @@
 import '../style/Konfigurator.scss'
-
+import { useState } from 'react'
 interface IKonPolProps{
     polecane:string
 }
+interface props{
+    komponenty:string[]
+}
 
 const KompPol = (props :IKonPolProps)=>{
-    console.log(props.polecane.split('\n'))
-    return <KompPolLayout polecane={props.polecane}/>
+    return <KompPolLayout komponenty={props.polecane.split('\n')}/>
 }
 
 export default KompPol;
 
-const KompPolLayout = (props:IKonPolProps)=>(
+const KompPolLayout = (props:props)=>(
     <div className='komponentyPol'>
-       {props.polecane}
+        <ul>
+       {props.komponenty.map((e,i)=>(
+        
+            e!==''?<li key={i}>{e +'\n'}</li>:''
+        
+       ))}
+       </ul>
     </div>
 )
