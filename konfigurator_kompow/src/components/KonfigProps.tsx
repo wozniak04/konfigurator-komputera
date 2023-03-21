@@ -1,6 +1,7 @@
 import '../style/Konfigurator.scss'
 import axios from "axios";
 import { useState,useEffect } from 'react';
+import { Value } from 'sass';
 
 interface IKonfigProps {
     src: string;
@@ -37,7 +38,7 @@ const KonfigLayout = (props: IOProps) => {
 
     return (
         <div className='konf'>
-            <img src={props.src} className='zdj' />
+            <img src={`/komponenty_zdj/${props.val}.jpg`} className='zdj' />
             <p className='opis'>{props.opis}</p>
             <select value={props.val} onChange={(e)=>props.ustawval(e)}>
                 
