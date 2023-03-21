@@ -182,31 +182,31 @@ const KonfigLayout=(props:IoKonfigProps)=>{
                     </div>
                     <div className="komponent" id="plyta-glowna">
                         <h3>Płyta Główna</h3>
-                        <Konfigurator src="" opis="plyta-glowna" dane={props.plyta} wybrane={props.ustawwybrane} index={1}/>
+                        <Konfigurator src={`/public/komponenty_zdj/${props.ustawwybrane}.jpg`} opis="plyta-glowna" dane={props.plyta} wybrane={props.ustawwybrane} index={1}/>
                     </div>
                     <div className="komponent" id="karta-graficzna">
                         <h3>Karta graficzna</h3>
-                        <Konfigurator src="" opis="karta-graficzna" dane={props.karta} wybrane={props.ustawwybrane} index={2}/>
+                        <Konfigurator src={`/public/komponenty_zdj/${props.ustawwybrane}.jpg`} opis="karta-graficzna" dane={props.karta} wybrane={props.ustawwybrane} index={2}/>
                     </div>
                     <div className="komponent" id="ram">
                         <h3>Pamięć RAM</h3>
-                        <Konfigurator src="" opis="ram" dane={props.ram} wybrane={props.ustawwybrane} index={3}/>
+                        <Konfigurator src={`/public/komponenty_zdj/${props.ustawwybrane}.jpg`} opis="ram" dane={props.ram} wybrane={props.ustawwybrane} index={3}/>
                     </div>
                     <div className="komponent" id="hdd">
                         <h3>Pamięć HDD</h3>   
-                        <Konfigurator src="" opis="dysk hdd" dane={props.hdd} wybrane={props.ustawwybrane} index={4}/>
+                        <Konfigurator src={`/public/komponenty_zdj/${props.ustawwybrane}.jpg`} opis="dysk hdd" dane={props.hdd} wybrane={props.ustawwybrane} index={4}/>
                     </div>
                     <div className="komponent" id="ssd">
                         <h3>Pamięć SSD</h3>
-                        <Konfigurator src="" opis="dysk ssd" dane={props.ssd} wybrane={props.ustawwybrane} index={5}/>
+                        <Konfigurator src={`/public/komponenty_zdj/${props.ustawwybrane}.jpg`} opis="dysk ssd" dane={props.ssd} wybrane={props.ustawwybrane} index={5}/>
                     </div>
                     <div className="komponent" id="zasilacz">
                         <h3>Zasilacz</h3>
-                        <Konfigurator src="" opis="zasilacz" dane={props.zasilacz} wybrane={props.ustawwybrane} index={6}/>
+                        <Konfigurator src={`/public/komponenty_zdj/${props.ustawwybrane}.jpg`} opis="zasilacz" dane={props.zasilacz} wybrane={props.ustawwybrane} index={6}/>
                     </div>
                     <div className="komponent" id="obudowa">
                         <h3>Obudowa</h3>
-                        <Konfigurator src="" opis="Obudowe" dane={props.obudowa} wybrane={props.ustawwybrane} index={7}/>
+                        <Konfigurator src={`/public/komponenty_zdj/${props.ustawwybrane}.jpg`} opis="Obudowe" dane={props.obudowa} wybrane={props.ustawwybrane} index={7}/>
                     </div>
                 </div>
                 <button className="zapisz">zapisz</button>
