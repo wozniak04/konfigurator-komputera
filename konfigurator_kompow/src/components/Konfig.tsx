@@ -129,6 +129,7 @@ interface IoKonfigProps{
     },[])
 
     React.useEffect(()=>{
+        setpolecane('...')
         axios.post('http://localhost:5000/Proponowane',{
             WYBRANE:[...wybrane],
             PROCESOR:[...procesor],
