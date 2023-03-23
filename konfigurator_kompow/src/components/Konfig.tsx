@@ -225,6 +225,12 @@ const KonfigLayout=(props:IoKonfigProps)=>{
                         <KompPol polecane={props.polecane}/>
                     </div>
                 </div>
+                <div className="twoje">
+                    <h3>Twoje konfiguracje</h3>
+                    <div>
+                        <KompPol polecane={props.polecane}/>
+                    </div>
+                </div>
             </div>
             <Footer/>
         </>
