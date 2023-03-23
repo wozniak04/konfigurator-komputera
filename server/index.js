@@ -181,6 +181,18 @@ app.post('/insertPodzespoly', async (req, res) => {
     conn.query(`INSERT INTO konfig (user,procesor,plyta_glowna,karta_graficzna,pamiec_ram,pamiec_hdd,pamiec_ssd,zasilacz,obudowa) VALUES ('${req.cookies.user}','${req.body.dane[0]}','${req.body.dane[1]}','${req.body.dane[2]}','${req.body.dane[3]}','${req.body.dane[4]}','${req.body.dane[5]}','${req.body.dane[6]}','${req.body.dane[7]}')`)
 })
 
+app.post('/getKonfiguracje', async (req, res) => {
+    conn.query('SELECT user,procesor,plyta_glowna,karta_graficzna,pamiec_ram,pamiec_hdd,pamiec_ssd,zasilacz,obudowa FROM konfig where user = ?',[req.cookies.user], (err, result) => {
+        if(err)
+        console.log(err)
+        else{
+            if(result.length>0){
+                res.send(result)
+            }
+        }
+    })
+})
+
 app.get('/getPodzespoly', async (req, res) => {
     conn.query('SELECT nazwa, rodzaj FROM podzespoly', (err, result) => {
         if (err)
