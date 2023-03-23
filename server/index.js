@@ -198,6 +198,18 @@ app.post('/ZapytanieAi', async (req, res) => {
     res.send(odp)
 
 })
+
+app.post('/insertGoogleSession',async(req, res) => {
+    let user = uuid.v4()
+    insertsesja(req.body.email,user)
+    res.send(
+        {
+            log:true,
+            idSession: user
+        }
+        )
+
+})
 app.post('/Proponowane', async (req, res) => {
     const zapytanie = `Jakie Komponenty byś dobrał z tych co ci tu podałem (Procesorów:${req.body.PROCESOR}, Płyt głównych:${req.body.PLYTA}, Kart graficznych:${req.body.KARTA}, Pamięci Ram:${req.body.RAM}, Pamięci hdd:${req.body.HDD}, Pamięci SSD:${req.body.SSD}, Zasilacza:${req.body.ZASILACZ}, Obudowy:${req.body.OBUDOWA}) dla tych komponentów:${req.body.WYBRANE} dobierz tak komponenty aby były kompatybilne, jeżeli płyta główna ma inny socket niż procesor to odpowiedz że nie pasuje procesor do płyty w innym wypadku odpowiedz następującym schematem komponent:nazwa modelu`
     let odp;
