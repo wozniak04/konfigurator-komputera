@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 14 Mar 2023, 10:55
+-- Czas generowania: 24 Mar 2023, 08:48
 -- Wersja serwera: 10.4.27-MariaDB
 -- Wersja PHP: 8.2.0
 
@@ -20,6 +20,25 @@ SET time_zone = "+00:00";
 --
 -- Baza danych: `database`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `konfig`
+--
+
+CREATE TABLE `konfig` (
+  `id` int(255) NOT NULL,
+  `user` varchar(50) NOT NULL,
+  `procesor` varchar(50) DEFAULT NULL,
+  `plyta_glowna` varchar(50) DEFAULT NULL,
+  `karta_graficzna` varchar(50) DEFAULT NULL,
+  `pamiec_ram` varchar(50) DEFAULT NULL,
+  `pamiec_hdd` varchar(50) DEFAULT NULL,
+  `pamiec_ssd` varchar(50) DEFAULT NULL,
+  `zasilacz` varchar(50) DEFAULT NULL,
+  `obudowa` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
 -- --------------------------------------------------------
 
@@ -48,7 +67,7 @@ INSERT INTO `podzespoly` (`id`, `nazwa`, `rodzaj`) VALUES
 (8, 'AMD Ryzen 9 7950X3D', 'Procesor'),
 (9, 'Intel Core i7-13700K', 'Procesor'),
 (10, 'AMD Ryzen 9 7950X', 'Procesor'),
-(11, 'RTX 2080 Ti', 'Karta graficzna'),
+(11, 'RTX 2090', 'Karta graficzna'),
 (12, 'RTX 3060', 'Karta graficzna'),
 (13, 'RX 6600', 'Karta graficzna'),
 (14, 'RTX 4070 Ti', 'Karta graficzna'),
@@ -62,7 +81,7 @@ INSERT INTO `podzespoly` (`id`, `nazwa`, `rodzaj`) VALUES
 (22, 'Thermaltake Toughpower GF 650W', 'Zasilacz'),
 (23, 'ENDORFY Supremo FM5 750W', 'Zasilacz'),
 (24, 'GOODRAM 16GB (2x8GB) 3600MHz', 'Pamięć RAM'),
-(25, 'Gigabyte Z690 UD DDR4', 'Płyta główna'),
+(25, 'Gigabyte Z690 GAMING X DDR4', 'Płyta główna'),
 (26, 'ASUS ROG STRIX B550-F GAMING', 'Płyta główna'),
 (27, 'ASUS TUF GAMING B760-PLUS WIFI DDR4', 'Płyta główna'),
 (28, 'RTX 3060 Ti', 'Karta graficzna'),
@@ -99,8 +118,7 @@ CREATE TABLE `sesje` (
 --
 
 INSERT INTO `sesje` (`id`, `username`, `uid`, `expiration`) VALUES
-(1, 'admin@admin.pl', 'd08d1ce4-fca1-4243-8544-4176b5dcc786', '2023-03-14 10:58:18'),
-(2, 'Asdasdadsa@wp.pl', 'ab9192d5-605c-4b7b-afec-e5d095c4b470', '2023-03-14 11:04:44');
+(12, 'admin@admin.pl', 'eb42173d-dbc8-421a-addf-4595a536a089', '2023-03-21 12:33:41');
 
 -- --------------------------------------------------------
 
@@ -121,11 +139,18 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `password`, `email`) VALUES
 (1, 'admin', 'admin@admin.pl'),
 (2, 'email', 'email@email.pl'),
-(3, '$2b$10$VMjgU6oZw1zu3vANxIw1wObDg7pmr', 'Asdasdadsa@wp.pl');
+(3, '$2b$10$VMjgU6oZw1zu3vANxIw1wObDg7pmr', 'Asdasdadsa@wp.pl'),
+(4, '$2b$10$vmhcfp3iM2.cuAiCnxvBeuQhHCql.', 'asfasf@afsfasf.as');
 
 --
 -- Indeksy dla zrzutów tabel
 --
+
+--
+-- Indeksy dla tabeli `konfig`
+--
+ALTER TABLE `konfig`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indeksy dla tabeli `podzespoly`
@@ -150,6 +175,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT dla tabeli `konfig`
+--
+ALTER TABLE `konfig`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT dla tabeli `podzespoly`
 --
 ALTER TABLE `podzespoly`
@@ -159,13 +190,13 @@ ALTER TABLE `podzespoly`
 -- AUTO_INCREMENT dla tabeli `sesje`
 --
 ALTER TABLE `sesje`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT dla tabeli `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
