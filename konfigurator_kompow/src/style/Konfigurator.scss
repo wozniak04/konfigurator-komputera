@@ -1,7 +1,8 @@
 .konf_wlasc {
-    margin: auto;
+    margin-left: 26vw;
     width: 45%;
     padding-top: 20px;
+    position: relative;
 }
 
 .komponent {
@@ -24,16 +25,17 @@
 
 .polecane {
     position: absolute;
-    right: 55px;
-    top: 100px;
-    margin: auto;
+    float:left;
+    left: 73vw;
+    padding: 0;
+    
 }
 
 .twoje {
+    float: left;
     position: absolute;
-    right: 70vw;
-    top: 100px;
-    margin: auto;
+    right: 73vw;
+    padding: 0;
 }
 
 .komponentyPol {
@@ -78,12 +80,13 @@ select {
     border: none;
     cursor: pointer;
   
-    position: relative;
-    bottom: 17vh;
+    position: absolute;
    
    width: 10vw;
    height: 10vh;
-   float: left;
+   float: right;
+   margin-top: 261vh;
+   margin-left: 2vw;
 }
 ul{
     list-style-type: none;
