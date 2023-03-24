@@ -181,6 +181,18 @@ app.post('/insertPodzespoly', async (req, res) => {
     conn.query(`INSERT INTO konfig (user,procesor,plyta_glowna,karta_graficzna,pamiec_ram,pamiec_hdd,pamiec_ssd,zasilacz,obudowa) VALUES ('${req.cookies.user}','${req.body.dane[0]}','${req.body.dane[1]}','${req.body.dane[2]}','${req.body.dane[3]}','${req.body.dane[4]}','${req.body.dane[5]}','${req.body.dane[6]}','${req.body.dane[7]}')`)
 })
 
+app.post('/getKonfiguracje', async (req, res) => {
+    conn.query('SELECT user,procesor,plyta_glowna,karta_graficzna,pamiec_ram,pamiec_hdd,pamiec_ssd,zasilacz,obudowa FROM konfig where user = ?',[req.cookies.user], (err, result) => {
+        if(err)
+        console.log(err)
+        else{
+            if(result.length>0){
+                res.send(result)
+            }
+        }
+    })
+})
+
 app.get('/getPodzespoly', async (req, res) => {
     conn.query('SELECT nazwa, rodzaj FROM podzespoly', (err, result) => {
         if (err)
@@ -198,8 +210,20 @@ app.post('/ZapytanieAi', async (req, res) => {
     res.send(odp)
 
 })
+
+app.post('/insertGoogleSession',async(req, res) => {
+    let user = uuid.v4()
+    insertsesja(req.body.email,user)
+    res.send(
+        {
+            log:true,
+            idSession: user
+        }
+        )
+
+})
 app.post('/Proponowane', async (req, res) => {
-    const zapytanie = `Jakie Komponenty byś dobrał z tych co ci tu podałem (Procesorów:${req.body.PROCESOR}, Płyt głównych:${req.body.PLYTA}, Kart graficznych:${req.body.KARTA}, Pamięci Ram:${req.body.RAM}, Pamięci hdd:${req.body.HDD}, Pamięci SSD:${req.body.SSD}, Zasilacza:${req.body.ZASILACZ}, Obudowy:${req.body.OBUDOWA}) aby było kompatybilne dla tych komponentów:${req.body.WYBRANE} jeżeli nie jest kompatybilne to odpowiedz że te komponenty nie są kompatybilne,a jeżeli jest odpowiedz następującym schematem komponent:nazwa modelu`
+    const zapytanie = `Jakie Komponenty byś dobrał z tych co ci tu podałem (Procesorów:${req.body.PROCESOR}, Płyt głównych:${req.body.PLYTA}, Kart graficznych:${req.body.KARTA}, Pamięci Ram:${req.body.RAM}, Pamięci hdd:${req.body.HDD}, Pamięci SSD:${req.body.SSD}, Zasilacza:${req.body.ZASILACZ}, Obudowy:${req.body.OBUDOWA}) dla tych komponentów:${req.body.WYBRANE} dobierz tak komponenty aby były kompatybilne, jeżeli płyta główna ma inny socket niż procesor to odpowiedz że nie pasuje procesor do płyty w innym wypadku odpowiedz następującym schematem komponent:nazwa modelu`
     let odp;
     if (req.body.WYBRANE.join('') !== '') {
         odp = await zapytanieAi(zapytanie)

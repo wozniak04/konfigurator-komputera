@@ -3,8 +3,24 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../style/Logowanie.scss";
 import Cookies from "universal-cookie";
+import { GoogleLogin } from '@react-oauth/google';
+import { gapi } from "gapi-script";
+import jwtDecode from "jwt-decode";
+
 
 const Logowanie = () => {
+
+  useEffect(() => {
+    function start() {
+      gapi.client.init({
+        clientId: '828982989711-kc4obhed5l9senof04a6m5cp87vbvme3.apps.googleusercontent.com',
+        scope: 'email',
+      });
+    }
+
+    gapi.load('client:auth2', start);
+  }, []);
+
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
   const [blad, setblad] = useState(true);
@@ -12,6 +28,34 @@ const Logowanie = () => {
   const cookies = new Cookies();
   cookies.remove("idSession");
   cookies.remove("user");
+  
+  
+
+  const handleLoginSuccess = (response:any) => {
+
+    const data:any=jwtDecode(response.credential)
+
+
+    axios
+      .post("http://localhost:5000/insertGoogleSession", {
+        email: data.email,
+      })
+      .then((res) => {
+        if (res.data.log) {
+          cookies.set("idSession", res.data.idSession);
+          cookies.set("user", data.email);
+          navigate("/");
+        } else {
+          setblad(false);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    
+  };
+
+ 
 
   const log = () => {
     axios
@@ -46,6 +90,7 @@ const Logowanie = () => {
     handleemailchange: handleemailchange,
     handlepasswordchange: handlepasswordchange,
     blad,
+    googlesucces:handleLoginSuccess,
   };
 
   return <LogowanieLayout {...temp} />;
@@ -57,6 +102,7 @@ interface ILogowanieLayoutProps {
   handleemailchange: (value: string) => void;
   handlepasswordchange: (value: string) => void;
   blad: boolean;
+  googlesucces:(response:any)=>void;
 }
 
 const LogowanieLayout = (props: ILogowanieLayoutProps) => (
@@ -85,6 +131,9 @@ const LogowanieLayout = (props: ILogowanieLayoutProps) => (
         <i className="spinner"></i>
         <span className="state">Zaloguj</span>
       </button>
+      <GoogleLogin
+      onSuccess={props.googlesucces}
+    />
     </div>
     <p hidden={props.blad} className="error">
       Niepoprawne dane

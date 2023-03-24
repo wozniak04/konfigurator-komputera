@@ -4,6 +4,7 @@ import Komponenty from "./Komponenty";
 import Menus from "./Menus";
 import Konfigurator from "./KonfigProps";
 import KompPol from "./KomponentyPol";
+import KompZap from "./KomponentyZap";
 import Footer from "./Footer";
 import axios from "axios";
 import React,{useState} from "react"
@@ -32,6 +33,10 @@ interface Ikonfig{
  const Konfigur=(props:Ikonfig)=>{
     const [konfig,setkonfig]=React.useState<string[]>([])
     const [polecane,setpolecane]=React.useState('')
+    const [zapisane,setzapisane]=React.useState<string[]>([])
+    const addtozapisane=async(x:string)=>{
+        setzapisane(prevzapisane=>[...prevzapisane,x])
+    }
     const [wybrane,setwybrane]=React.useState<string[]>(['','','','','','','',''])
     const addtowybrane=async(x:string,index:number)=>{
         const tab=[...wybrane]
@@ -223,6 +228,12 @@ const KonfigLayout=(props:IoKonfigProps)=>{
                     <h3>Polecane komponenty do komputerów:</h3>                   
                     <div>
                         <KompPol polecane={props.polecane}/>
+                    </div>
+                </div>
+                <div className="twoje">
+                    <h3>Twoje konfiguracje</h3>
+                    <div>
+                        <KompZap polecane={props.polecane}/>
                     </div>
                 </div>
             </div>
