@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const bcrypt = require('bcrypt')
 const { Configuration, OpenAIApi } = require('openai')
+const jwtDecode=require('jwt-decode')
 require('dotenv').config()
 
 app.use(cors({
@@ -213,11 +214,13 @@ app.post('/ZapytanieAi', async (req, res) => {
 
 app.post('/insertGoogleSession',async(req, res) => {
     let user = uuid.v4()
-    insertsesja(req.body.email,user)
+    const data=jwtDecode(req.body.data)
+    insertsesja(data.email,user)
     res.send(
         {
             log:true,
-            idSession: user
+            idSession: user,
+            email:data.email
         }
         )
 
