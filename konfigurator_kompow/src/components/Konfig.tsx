@@ -13,6 +13,16 @@ interface Iorodzaj{
     nazwa:string;
     rodzaj:string;
 }
+interface zapisaneKonf{
+    procesor:string;
+    plyta_glowna:string;
+    karta_graficzna:string;
+    pamiec_ram:string;
+    pamiec_ssd:string;
+    pamiec_hdd:string;
+    zasilacz:string;
+    obudowa:string;
+}
 interface IoKonfigProps{
     procesor:string[];
     plyta:string[];
@@ -25,6 +35,7 @@ interface IoKonfigProps{
     ustawwybrane:(x:string,index:number)=>void;
     polecane:string;
     zapisz:() => void;
+    zapisane:zapisaneKonf[]
 }
 
 interface Ikonfig{
@@ -33,10 +44,13 @@ interface Ikonfig{
  const Konfigur=(props:Ikonfig)=>{
     const [konfig,setkonfig]=React.useState<string[]>([])
     const [polecane,setpolecane]=React.useState('')
-    const [zapisane,setzapisane]=React.useState<string[]>([])
-    const addtozapisane=async(x:string)=>{
-        setzapisane(prevzapisane=>[...prevzapisane,x])
-    }
+    const [zapisane,setzapisane]=React.useState<zapisaneKonf[]>([])
+    const addtozapisane=async(x:zapisaneKonf[])=>{
+
+       
+        setzapisane([...zapisane,...x])
+        }
+    
     const [wybrane,setwybrane]=React.useState<string[]>(['','','','','','','',''])
     const addtowybrane=async(x:string,index:number)=>{
         const tab=[...wybrane]
@@ -135,6 +149,11 @@ interface Ikonfig{
         .then((res)=>{
             dodaj(res.data)
         })
+        axios.get('http://localhost:5000/getKonfiguracje',{withCredentials:true})
+        .then((res)=>{
+            console.log(res.data)
+            addtozapisane(res.data)
+        })
     },[])
 
     React.useEffect(()=>{
@@ -154,6 +173,10 @@ interface Ikonfig{
             setpolecane(res.data)
         })     
     },[JSON.stringify(wybrane)])
+
+    React.useEffect(()=>{
+        console.log(zapisane) 
+    },[JSON.stringify(zapisane)])
 
 
 
@@ -177,7 +200,8 @@ interface Ikonfig{
         obudowa:obudowa,
         ustawwybrane:addtowybrane,
         polecane:polecane,
-        zapisz:zapiszkonfiguracje
+        zapisz:zapiszkonfiguracje,
+        zapisane:zapisane
 
     }
 
@@ -231,9 +255,13 @@ const KonfigLayout=(props:IoKonfigProps)=>{
                     </div>
                 </div>
                 <div className="twoje">
-                    <h3>Twoje konfiguracje</h3>
+                    <h3>Twoje Zapisane konfiguracje</h3>
                     <div>
-                        <KompZap polecane={props.polecane}/>
+                        {
+                            props.zapisane.map((e,i)=>(
+                                <KompZap konfig={e} key={i}/>
+                            ))
+                        }
                     </div>
                 </div>
             </div>

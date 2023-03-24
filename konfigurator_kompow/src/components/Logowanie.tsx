@@ -5,7 +5,6 @@ import "../style/Logowanie.scss";
 import Cookies from "universal-cookie";
 import { GoogleLogin } from '@react-oauth/google';
 import { gapi } from "gapi-script";
-import jwtDecode from "jwt-decode";
 
 
 const Logowanie = () => {
@@ -33,17 +32,14 @@ const Logowanie = () => {
 
   const handleLoginSuccess = (response:any) => {
 
-    const data:any=jwtDecode(response.credential)
-
-
     axios
       .post("http://localhost:5000/insertGoogleSession", {
-        email: data.email,
+        data: response.credential
       })
       .then((res) => {
         if (res.data.log) {
           cookies.set("idSession", res.data.idSession);
-          cookies.set("user", data.email);
+          cookies.set("user", res.data.email);
           navigate("/");
         } else {
           setblad(false);
@@ -133,6 +129,7 @@ const LogowanieLayout = (props: ILogowanieLayoutProps) => (
       </button>
       <GoogleLogin
       onSuccess={props.googlesucces}
+      
     />
     </div>
     <p hidden={props.blad} className="error">

@@ -39,7 +39,7 @@ const KonfigLayout = (props: IOProps) => {
             <img src={props.val!=='' ? `/komponenty_zdj/${props.val}.jpg`: `/komponenty_zdj/${props.dane[0]}.jpg`} className='zdj' />
             <p className='opis'>{props.opis}</p>
             <select value={props.val} onChange={(e)=>props.ustawval(e)}>
-                
+                <option value=""></option>
                 {
                     props.dane.map((e,i)=>(
                         <option key={i} value={e}>{e}</option>

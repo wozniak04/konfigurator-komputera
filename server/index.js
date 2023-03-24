@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const bcrypt = require('bcrypt')
 const { Configuration, OpenAIApi } = require('openai')
+const jwtDecode=require('jwt-decode')
 require('dotenv').config()
 
 app.use(cors({
@@ -181,8 +182,8 @@ app.post('/insertPodzespoly', async (req, res) => {
     conn.query(`INSERT INTO konfig (user,procesor,plyta_glowna,karta_graficzna,pamiec_ram,pamiec_hdd,pamiec_ssd,zasilacz,obudowa) VALUES ('${req.cookies.user}','${req.body.dane[0]}','${req.body.dane[1]}','${req.body.dane[2]}','${req.body.dane[3]}','${req.body.dane[4]}','${req.body.dane[5]}','${req.body.dane[6]}','${req.body.dane[7]}')`)
 })
 
-app.post('/getKonfiguracje', async (req, res) => {
-    conn.query('SELECT user,procesor,plyta_glowna,karta_graficzna,pamiec_ram,pamiec_hdd,pamiec_ssd,zasilacz,obudowa FROM konfig where user = ?',[req.cookies.user], (err, result) => {
+app.get('/getKonfiguracje', async (req, res) => {
+    conn.query('SELECT procesor,plyta_glowna,karta_graficzna,pamiec_ram,pamiec_hdd,pamiec_ssd,zasilacz,obudowa FROM konfig where user = ? GROUP BY id',[req.cookies.user], (err, result) => {
         if(err)
         console.log(err)
         else{
@@ -213,11 +214,13 @@ app.post('/ZapytanieAi', async (req, res) => {
 
 app.post('/insertGoogleSession',async(req, res) => {
     let user = uuid.v4()
-    insertsesja(req.body.email,user)
+    const data=jwtDecode(req.body.data)
+    insertsesja(data.email,user)
     res.send(
         {
             log:true,
-            idSession: user
+            idSession: user,
+            email:data.email
         }
         )
 
